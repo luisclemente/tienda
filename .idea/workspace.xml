@@ -1,24 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="177cbc44-dae1-4b45-88c0-65cc0d5aed3a" name="Default Changelist" comment="" />
+    <list default="true" id="177cbc44-dae1-4b45-88c0-65cc0d5aed3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/material-kit.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/material-kit.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/material-kit.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/apple-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/bg7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/city-profile.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/city.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/clem-onojegaw.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/clem-onojeghuo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/cynthia-del-rio.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/mariya-georgieva.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/olu-eletu.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/studio-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/studio-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/studio-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/studio-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/examples/studio-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/avatar.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/camp.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/card-profile1-square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/card-profile2-square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/card-profile4-square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/card-profile5-square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/card-profile6-square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/christian.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/kendall.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/faces/marc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/landing.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/profile.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/profile_city.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/core/bootstrap-material-design.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/core/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/core/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material-kit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material-kit.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/material-kit.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/bootstrap-datetimepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/jquery.sharrre.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/moment.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/plugins/nouislider.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tienda.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tienda.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="tienda@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="tienda@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="tienda@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="tienda: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vendor/mockery/mockery/docker/php56/Dockerfile">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+      </list>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -99,13 +201,27 @@
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-debugbar" />
+      <path value="$PROJECT_DIR$/vendor/maximebf/debugbar" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="283" />
-    <option name="y" value="98" />
-    <option name="width" value="1338" />
-    <option name="height" value="698" />
+    <option name="x" value="474" />
+    <option name="y" value="25" />
+    <option name="width" value="794" />
+    <option name="height" value="739" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -122,37 +238,7 @@
             <path>
               <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
               <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="mockery" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="mockery" type="462c0819:PsiDirectoryNode" />
-              <item name="mockery" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="mockery" type="462c0819:PsiDirectoryNode" />
-              <item name="mockery" type="462c0819:PsiDirectoryNode" />
-              <item name="docker" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="mockery" type="462c0819:PsiDirectoryNode" />
-              <item name="mockery" type="462c0819:PsiDirectoryNode" />
-              <item name="docker" type="462c0819:PsiDirectoryNode" />
-              <item name="php56" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -162,11 +248,22 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/js" />
+      <recent name="$PROJECT_DIR$/public/css" />
+      <recent name="$PROJECT_DIR$/resources" />
+      <recent name="$PROJECT_DIR$/resources/js" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -196,36 +293,38 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552578501944</updated>
-      <workItem from="1552578503741" duration="769000" />
+      <workItem from="1552578503741" duration="2949000" />
+      <workItem from="1552643930872" duration="607000" />
+      <workItem from="1553030672991" duration="5081000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="769000" />
+    <option name="totallyTimeSpent" value="8637000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1368" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="474" y="25" width="794" height="739" extended-state="0" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.45576409" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" visible="true" weight="0.3289689" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Database Console" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.04918033" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.719697" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +333,61 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/vendor/mockery/mockery/docker/php56/Dockerfile">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/476eb4b6-6225-4462-a2e6-7229a751d38b/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://476eb4b6-6225-4462-a2e6-7229a751d38b/schema/tienda/table/migrations">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="173" column="49" selection-start-line="173" selection-start-column="49" selection-end-line="173" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/core/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/material-kit.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/core/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
