@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                     <div class="card card-login">
-                        <form class="form" method="post" action="{{ route('home') }}">
+                        <form class="form" method="post" action="{{ route('login') }}">
                             @csrf
                             <div class="card-header card-header-primary text-center">
                                 <h4 class="card-title">Login</h4>
@@ -17,13 +17,13 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                          <i class="material-icons">fingerprint</i>
+                                            <i class="material-icons">mail</i>
                                         </span>
                                     </div>
-                                    <input type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
-                                           placeholder="Nombre de usuario"
-                                           name="username" value="{{ old('username') }}" required autofocus
-                                    >
+                                    <input id="email" type="email" class="form-control{{ $errors->has('email')
+                                    ? ' is-invalid'
+                                    : '' }}" name="email"
+                                           value="{{ old('email') }}" placeholder="Email" autofocus>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -31,9 +31,10 @@
                                           <i class="material-icons">lock_outline</i>
                                         </span>
                                     </div>
-                                    <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                    <input type="password"
+                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
                                            placeholder="Password..."
-                                           name="password" required
+                                           name="password"
                                     >
                                 </div>
                                 <div class="form-check">
@@ -49,7 +50,8 @@
                                 </div>
                             </div>
                             <div class="footer text-center">
-                                <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Iniciar Sesión</button>
+                                <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Iniciar Sesión
+                                </button>
                             </div>
                         </form>
                     </div>
