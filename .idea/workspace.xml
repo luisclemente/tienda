@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="177cbc44-dae1-4b45-88c0-65cc0d5aed3a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/recortes.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/recortes.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/476eb4b6-6225-4462-a2e6-7229a751d38b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/476eb4b6-6225-4462-a2e6-7229a751d38b.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +45,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="tienda: schema" type="76f4a085:MysqlImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="tienda@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="tienda: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="categories: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -56,67 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/recortes.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-940">
-              <caret line="117" column="9" lean-forward="true" selection-start-line="117" selection-start-column="9" selection-end-line="117" selection-end-column="9" />
-              <folding>
-                <element signature="n#div#0;n#form#0;n#!!top" />
-                <element signature="n#div#1;n#form#0;n#!!top" />
-                <element signature="n#div#2;n#form#0;n#!!top" />
-                <element signature="n#div#3;n#form#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_20_201359_create_products_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="55" column="58" lean-forward="true" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
-              <folding>
-                <element signature="e#97#215#0#HTML" expanded="true" />
-                <element signature="e#3413#4855#0#HTML" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/login-page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="98" column="37" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="102" selection-end-column="22" />
-              <folding>
-                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/profile-page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="22" column="129" selection-start-line="22" selection-start-column="129" selection-end-line="22" selection-end-column="129" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/landing-page.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="73" column="69" selection-start-line="73" selection-start-column="69" selection-end-line="73" selection-end-column="69" />
-              <folding>
-                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-              </folding>
+            <state>
+              <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -139,6 +93,11 @@
         <option value="$PROJECT_DIR$/recortes.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/footer.blade.php" />
+        <option value="$PROJECT_DIR$/material-kit-html-v2.0.4/examples/landing-page.html" />
+        <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_200734_create_categories_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_03_20_201359_create_products_table.php" />
       </list>
     </option>
   </component>
@@ -248,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,43 +218,24 @@
             <path>
               <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
               <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
               <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
-              <item name="tienda" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="auth" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.console.LAST_STATE" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -341,18 +282,19 @@
       <workItem from="1552643930872" duration="607000" />
       <workItem from="1553030672991" duration="6350000" />
       <workItem from="1553076527325" duration="15887000" />
-      <workItem from="1553099531566" duration="4512000" />
+      <workItem from="1553099531566" duration="8100000" />
+      <workItem from="1553163693338" duration="780000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30305000" />
+    <option name="totallyTimeSpent" value="34673000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1368" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14772727" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.3295082" />
@@ -364,14 +306,14 @@
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3295082" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.90819675" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.9067103" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.719697" />
+      <window_info anchor="right" id="Database" order="3" weight="0.2621212" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,28 +376,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/profile-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="22" column="129" selection-start-line="22" selection-start-column="129" selection-end-line="22" selection-end-column="129" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/landing-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="73" column="69" selection-start-line="73" selection-start-column="69" selection-end-line="73" selection-end-column="69" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -465,37 +385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1690">
+        <state relative-caret-position="909">
           <caret line="98" column="25" lean-forward="true" selection-start-line="98" selection-start-column="25" selection-end-line="98" selection-end-column="25" />
-          <folding>
-            <element signature="n#li#0;n#ul#0;n#div#1;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/login-page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="98" column="37" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="102" selection-end-column="22" />
-          <folding>
-            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="24" column="54" selection-start-line="16" selection-start-column="32" selection-end-line="26" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -512,14 +403,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/login-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="98" column="37" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="102" selection-end-column="22" />
+          <folding>
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="60" column="36" selection-start-line="60" selection-start-column="36" selection-end-line="60" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/footer.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="32" column="103" selection-start-line="32" selection-start-column="103" selection-end-line="32" selection-end-column="103" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="55" column="58" lean-forward="true" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
+        <state relative-caret-position="365">
+          <caret line="80" column="11" lean-forward="true" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/profile-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="22" column="129" selection-start-line="22" selection-start-column="129" selection-end-line="22" selection-end-column="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/material-kit-html-v2.0.4/examples/landing-page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="236" column="8" lean-forward="true" selection-start-line="87" selection-start-column="2" selection-end-line="236" selection-end-column="8" />
           <folding>
-            <element signature="e#97#215#0#HTML" expanded="true" />
-            <element signature="e#3413#4855#0#HTML" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#12922#12928#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
+          <folding>
+            <element signature="e#159#222#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://476eb4b6-6225-4462-a2e6-7229a751d38b/schema/tienda/table/categories">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_20_200734_create_categories_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_03_20_201359_create_products_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
         </state>
       </provider>
     </entry>
