@@ -11,7 +11,7 @@
                 <h2 class="title">Listado de productos</h2>
                 <div class="team">
                     <div class="row">
-                        <a href="{{ url('admin/products/create') }}"
+                        <a href="{{ url('create') }}"
                            class="btn btn-primary btn-round">Nuevo Producto</a>
                         <table class="table">
                             <thead>
@@ -36,9 +36,9 @@
                                     <button type="button" rel="tooltip" class="btn btn-info">
                                         <i class="fa fa-info"></i>
                                     </button>
-                                    <button type="button" rel="tooltip" class="btn btn-success">
+                                    <a href="{{ url ('admin/products/' . $product->id . '/edit') }}" rel="tooltip" class="btn btn-success">
                                         <i class="material-icons">edit</i>
-                                    </button>
+                                    </a>
                                     <button type="button" rel="tooltip" class="btn btn-danger">
                                         <i class="material-icons">close</i>
                                     </button>

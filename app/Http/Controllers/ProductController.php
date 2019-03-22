@@ -25,7 +25,7 @@ class ProductController extends Controller
     */
    public function create ()
    {
-      return view ( 'admin.products.create' );
+      //   return view ( 'admin.products.create' );
    }
 
    /**
@@ -36,16 +36,16 @@ class ProductController extends Controller
     */
    public function store ( Request $request )
    {
-     // dd($request->all());
+      // dd($request->all());
       $product = new Product();
-      $product->name = $request->input ('name');
-      $product->description = $request->input ('description');
-      $product->price = $request->input ('price');
-      $product->long_description = $request->input ('long_description');
+      $product->name = $request->input ( 'name' );
+      $product->description = $request->input ( 'description' );
+      $product->price = $request->input ( 'price' );
+      $product->long_description = $request->input ( 'long_description' );
 
-      $product->save();
+      $product->save ();
 
-      return redirect('/admin/products');
+      return redirect ( '/admin/products' );
    }
 
    /**
@@ -67,7 +67,8 @@ class ProductController extends Controller
     */
    public function edit ( $id )
    {
-      //
+      $product = Product::find ( $id );
+      return view ( 'admin.products.edit', compact ('product') );
    }
 
    /**
@@ -79,7 +80,15 @@ class ProductController extends Controller
     */
    public function update ( Request $request, $id )
    {
-      //
+      $product = Product::find ( $id );
+      $product->name = $request->input ( 'name' );
+      $product->description = $request->input ( 'description' );
+      $product->price = $request->input ( 'price' );
+      $product->long_description = $request->input ( 'long_description' );
+
+      $product->save ();
+
+      return redirect ( '/admin/products' );
    }
 
    /**

@@ -25,4 +25,6 @@ Route::get ( '/home', 'HomeController@index' )->name ( 'home' );
 
 Route::get ( '/admin/products', 'ProductController@index' )->name ( '' );
 Route::get ( '/admin/products/create', 'ProductController@create' )->name ( 'create' );
-Route::post ( '/admin/products', 'ProductController@store' )->name ( '' );
+Route::post ( '/admin/products', 'ProductController@store' )->name ( 'store' );
+Route::get ( '/admin/products/{id}/edit', 'ProductController@edit' )->name ( 'edit' );
+Route::post ( '/admin/products/{id}/update', 'ProductController@update' )->name ( 'update' );
