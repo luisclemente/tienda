@@ -22,3 +22,7 @@ Route::get ( '/', function () {
 Auth::routes ();
 
 Route::get ( '/home', 'HomeController@index' )->name ( 'home' );
+
+Route::get ( '/admin/products', 'ProductController@index' )->name ( '' );
+Route::get ( '/admin/products/create', 'ProductController@create' )->name ( '' );
+Route::post ( '/admin/products', 'ProductController@store' )->name ( '' );
