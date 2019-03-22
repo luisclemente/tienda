@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Listado de productos')
-@section('body-class', 'product-page sidebar-collapse')
+@section('body-class', 'profile-page sidebar-collapse')
 @section('content')
     <div class="page-header header-filter" data-parallax="true"
          style="background-image: url('{{ asset ('img/profile_city.jpg') }}')">
@@ -11,6 +11,8 @@
                 <h2 class="title">Listado de productos</h2>
                 <div class="team">
                     <div class="row">
+                        <a href="{{ url('admin/products/create') }}"
+                           class="btn btn-primary btn-round">Nuevo Producto</a>
                         <table class="table">
                             <thead>
                             <tr>
@@ -28,7 +30,7 @@
                                 <td class="text-center">{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>{{ $product->description }}</td>
-                                <td>{{ $product->category->name }}</td>
+                                <td>{{ $product->category ? $product->category->name : 'General' }}</td>
                                 <td class="text-right">&euro; {{ $product->price }}</td>
                                 <td class="td-actions text-right">
                                     <button type="button" rel="tooltip" class="btn btn-info">
@@ -45,6 +47,7 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>
