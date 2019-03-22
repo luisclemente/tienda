@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Bienvenido a Tienda Luis')
 @section('body-class', 'landing-page sidebar-collapse')
 @section('content')
     <div class="page-header header-filter" data-parallax="true"
@@ -6,14 +7,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="title">Your Story Starts With Us.</h1>
-                    <h4>Every landing page needs a small description after the big bold title, that&apos;s why we added
-                        this text here. Add here all the information that can make you or your product create the first
-                        impression.</h4>
+                    <h1 class="title">Tu tienda comienza aquí</h1>
+                    <h4>Realiza pedidos en línea</h4>
                     <br>
                     <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank"
                        class="btn btn-danger btn-raised btn-lg">
-                        <i class="fa fa-play"></i> Watch video
+                        <i class="fa fa-play"></i> ¿Como funciona?
                     </a>
                 </div>
             </div>
@@ -24,11 +23,9 @@
             <div class="section text-center">
                 <div class="row">
                     <div class="col-md-8 ml-auto mr-auto">
-                        <h2 class="title">Let&apos;s talk product</h2>
-                        <h5 class="description">This is the paragraph where you can write more details about your
-                            product. Keep you user engaged by providing meaningful information. Remember that by this
-                            time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if
-                            you want the user to see more.</h5>
+                        <h2 class="title">¿Por qué Tienda Luis?</h2>
+                        <h5 class="description">Puedes revisar nuestra relación completa de productos, comparar precios
+                            y realizar tus pedidos cuando estés seguro.</h5>
                     </div>
                 </div>
                 <div class="features">
@@ -38,9 +35,9 @@
                                 <div class="icon icon-info">
                                     <i class="material-icons">chat</i>
                                 </div>
-                                <h4 class="info-title">Free Chat</h4>
-                                <p>Divide details about your product or agency work into parts. Write a few lines about
-                                    each one. A paragraph describing a feature will be enough.</p>
+                                <h4 class="info-title">Atendemos tus dudas</h4>
+                                <p>Atendemos rápidamente cualquier duda que tengas vía chat. No estás sólo, sino que
+                                    siempre estamos atentos a tus inquietudes.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -48,9 +45,9 @@
                                 <div class="icon icon-success">
                                     <i class="material-icons">verified_user</i>
                                 </div>
-                                <h4 class="info-title">Verified Users</h4>
-                                <p>Divide details about your product or agency work into parts. Write a few lines about
-                                    each one. A paragraph describing a feature will be enough.</p>
+                                <h4 class="info-title">Pago seguro</h4>
+                                <p>Todo pedido que realices será confirmado a través de una llamada. Si no confías en
+                                    los pagos en líea puedes pagar contra entrega el valor acordado.</p>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -58,9 +55,9 @@
                                 <div class="icon icon-danger">
                                     <i class="material-icons">fingerprint</i>
                                 </div>
-                                <h4 class="info-title">Fingerprint</h4>
-                                <p>Divide details about your product or agency work into parts. Write a few lines about
-                                    each one. A paragraph describing a feature will be enough.</p>
+                                <h4 class="info-title">Información privada</h4>
+                                <p>Los pedidos que realices sólo los conocerás tú a través de tu panel de usuario.
+                                    Nadie más tiene acceso a esta información.</p>
                             </div>
                         </div>
                     </div>
@@ -75,13 +72,13 @@
                                 <div class="team-player">
                                     <div class="card card-plain">
                                         <div class="col-md-6 ml-auto mr-auto">
-                                            <img src="{{ asset ('img/faces/avatar.jpg') }}"
+                                            <img src="{{ asset ( $product->images()->first()->image ) }}"
                                                  alt="Thumbnail Image"
                                                  class="img-raised rounded-circle img-fluid">
                                         </div>
                                         <h4 class="card-title">{{ $product->name }}
                                             <br>
-                                            <small class="card-description text-muted">Model</small>
+                                            <small class="card-description text-muted">{{ $product->category->name }}</small>
                                         </h4>
                                         <div class="card-body">
                                             <p class="card-description">{{ $product->description }}</p>
