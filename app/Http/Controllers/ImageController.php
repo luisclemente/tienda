@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductImage;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class ImageController extends Controller
 {
    /**
     * Display a listing of the resource.
     *
     * @return \Illuminate\Http\Response
     */
-   public function index ()
+   public function index ( $id )
    {
-      $products = Product::paginate ( 10 );
-      return view ( 'admin.products.index', compact ( 'products' ) );
+      $product = Product::find ( $id );
+      $images = $product->images;
+      return view ( 'admin.products.images.index', compact ( 'product', 'images' ) );
    }
 
    /**
@@ -25,7 +27,7 @@ class ProductController extends Controller
     */
    public function create ()
    {
-      return view ( 'admin.products.create' );
+      //
    }
 
    /**
@@ -34,18 +36,22 @@ class ProductController extends Controller
     * @param  \Illuminate\Http\Request $request
     * @return \Illuminate\Http\Response
     */
-   public function store ( Request $request )
+   public function store ( Request $request, $id )
    {
-      // dd($request->all());
-      $product = new Product();
-      $product->name = $request->input ( 'name' );
-      $product->description = $request->input ( 'description' );
-      $product->price = $request->input ( 'price' );
-      $product->long_description = $request->input ( 'long_description' );
+      // guardar la imagen en nuestro proyecto
+      $file = $request->file ( 'photo' );
+      $path = public_path () . '/images/products'; // ruta absoluta a public + ruta directorio imágenes
+      $fileName = uniqid () . $file->getClientOriginalName (); // id único + nombre del archivo q sube el usuario
+      $file->move ( $path, $fileName );
 
-      $product->save ();
+      // crear 1 registro en la bd
+      $productImage = new ProductImage();
+      $productImage->image = $fileName;
+      $productImage->product_id = $id;
+      $productImage->save();
 
-      return redirect ( '/admin/products' );
+      return back();
+
    }
 
    /**
@@ -67,8 +73,7 @@ class ProductController extends Controller
     */
    public function edit ( $id )
    {
-      $product = Product::find ( $id );
-      return view ( 'admin.products.edit', compact ( 'product' ) );
+      //
    }
 
    /**
@@ -80,15 +85,7 @@ class ProductController extends Controller
     */
    public function update ( Request $request, $id )
    {
-      $product = Product::find ( $id );
-      $product->name = $request->input ( 'name' );
-      $product->description = $request->input ( 'description' );
-      $product->price = $request->input ( 'price' );
-      $product->long_description = $request->input ( 'long_description' );
-
-      $product->save ();
-
-      return redirect ( '/admin/products' );
+      //
    }
 
    /**
@@ -99,9 +96,6 @@ class ProductController extends Controller
     */
    public function destroy ( $id )
    {
-      $product = Product::find ( $id );
-      $product->delete ();
-
-      return back ();
+      //
    }
 }

@@ -1,6 +1,9 @@
 <?php
 
 use App\Product;
+use App\Category;
+use App\User;
+use App\ProductImage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +26,17 @@ Auth::routes ();
 
 Route::get ( '/home', 'HomeController@index' )->name ( 'home' );
 
-Route::get ( '/admin/products', 'ProductController@index' )->name ( '' );
-Route::get ( '/admin/products/create', 'ProductController@create' )->name ( 'create' );
-Route::post ( '/admin/products', 'ProductController@store' )->name ( 'store' );
-Route::get ( '/admin/products/{id}/edit', 'ProductController@edit' )->name ( 'edit' );
-Route::post ( '/admin/products/{id}/update', 'ProductController@update' )->name ( 'update' );
+Route::middleware ( ['auth', 'admin' ] )->prefix('admin') ->group ( function () {
+   Route::get ( '/products', 'ProductController@index' ); // listado
+   Route::get ( '/products/create', 'ProductController@create' )->name ( 'create' ); // formulario creación
+   Route::post ( '/products', 'ProductController@store' )->name ( 'store' ); // store
+   Route::get ( '/products/{id}/edit', 'ProductController@edit' )->name ( 'edit' ); // Formulario edición
+   Route::post ( '/products/{id}/update', 'ProductController@update' )->name ( 'update' ); // update
+   Route::delete ( '/products/{id}', 'ProductController@destroy' )->name ( 'destroy' ); // Formulario eliminación
+
+   Route::get ( '/products/{id}/images', 'ImageController@index' ); // listado y formulario creación
+   Route::post ( '/products/{id}/images', 'ImageController@store' ); // store
+   Route::delete ( '/products/{id}/images', 'ImageController@destroy' ); // form eliminar
+
+} );
+
