@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\ProductImage;
+use File;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -16,7 +17,7 @@ class ImageController extends Controller
    public function index ( $id )
    {
       $product = Product::find ( $id );
-      $images = $product->images;
+      $images = $product->images()->orderBy('featured', 'DESC')->get();
       return view ( 'admin.products.images.index', compact ( 'product', 'images' ) );
    }
 
@@ -42,15 +43,16 @@ class ImageController extends Controller
       $file = $request->file ( 'photo' );
       $path = public_path () . '/images/products'; // ruta absoluta a public + ruta directorio imágenes
       $fileName = uniqid () . $file->getClientOriginalName (); // id único + nombre del archivo q sube el usuario
-      $file->move ( $path, $fileName );
+      $moved = $file->move ( $path, $fileName );
 
       // crear 1 registro en la bd
-      $productImage = new ProductImage();
-      $productImage->image = $fileName;
-      $productImage->product_id = $id;
-      $productImage->save();
-
-      return back();
+      if ( $moved ) {
+         $productImage = new ProductImage();
+         $productImage->image = $fileName;
+         $productImage->product_id = $id;
+         $productImage->save ();
+      }
+      return back ();
 
    }
 
@@ -85,7 +87,7 @@ class ImageController extends Controller
     */
    public function update ( Request $request, $id )
    {
-      //
+
    }
 
    /**
@@ -94,8 +96,36 @@ class ImageController extends Controller
     * @param  int $id
     * @return \Illuminate\Http\Response
     */
-   public function destroy ( $id )
+   public function destroy ( Request $request, $id )
    {
-      //
+      // Eliminar el archivo
+      $productImage = ProductImage::find ( $request->image_id );
+      // dd($productImage);
+      if ( substr ( $productImage->image, 0, 4 ) === 'http' ) {
+         $deleted = true;
+      } else {
+         $fullPath = public_path () . '/images/products/' . $productImage->image;
+         $deleted = File::delete ( $fullPath );
+      }
+      //Eliminar el registro de la img en la bd
+      if ( $deleted ) {
+         $productImage->delete ();
+      }
+      return back ();
+   }
+
+   public function select ( $product_id, $image_id )
+   {
+      // Quitamos el destacado a la imagen que lo tuviera
+      ProductImage::where('product_id', $product_id)->update([
+         'featured' => false
+      ]);
+
+      // Destacamos una imagen del producto
+      $productImage = ProductImage::find ( $image_id );
+      $productImage->featured = true;
+      $productImage->save ();
+
+      return back();
    }
 }

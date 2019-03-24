@@ -72,7 +72,7 @@
                                 <div class="team-player">
                                     <div class="card card-plain">
                                         <div class="col-md-6 ml-auto mr-auto">
-                                            <img src="{{ asset ( $product->images()->first()->image ) }}"
+                                            <img src="{{ $product->featured_image_url  }}"
                                                  alt="Thumbnail Image"
                                                  class="img-raised rounded-circle img-fluid">
                                         </div>
