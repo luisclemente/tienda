@@ -9,9 +9,9 @@
         <div class="container">
             <div class="section text-center">
                 <h2 class="title">Listado de productos</h2>
-                <div class="team">
-                    <div class="row">
-                        <a href="{{ url('create') }}"
+                <div class="team text-center">
+                    <div class="row text-center">
+                        <a href="{{ url('admin/products/create') }}"
                            class="btn btn-primary btn-round">Nuevo Producto</a>
                         <table class="table">
                             <thead>
@@ -30,14 +30,15 @@
                                     <td class="text-center">{{ $product->id }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->description }}</td>
-                                    <td>{{ $product->category ? $product->category->name : 'General' }}</td>
+                                    <td>{{ $product->category_name }}</td>
                                     <td class="text-right">&euro; {{ $product->price }}</td>
                                     <td class="td-actions text-right">
                                         <form method="post"
                                               action="{{ url('admin/products/' . $product->id ) }}">
                                             @csrf
                                             @method('delete')
-                                            <a type="button" rel="tooltip" class="btn btn-info">
+                                            <a href="{{ url('/products/' . $product->id) }}"
+                                               rel="tooltip" class="btn btn-info" title="Ver producto" target="_blank">
                                                 <i class="fa fa-info"></i>
                                             </a>
                                             <a href="{{ url ('admin/products/' . $product->id . '/edit') }}" rel="tooltip"

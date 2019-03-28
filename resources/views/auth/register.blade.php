@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('body-class', 'login-page sidebar-collapse')
+@section('body-class', 'signup-page')
 
 @section('content')
     <div class="page-header header-filter"
@@ -8,6 +8,16 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                     <div class="card card-login">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form class="form" method="post" action="{{ route('register') }}">
                             @csrf
                             <div class="card-header card-header-primary text-center">
@@ -18,14 +28,26 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                          <i class="material-icons">fingerprint</i>
+                                          <i class="material-icons">face</i>
                                         </span>
                                     </div>
-                                    <input type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}"
+                                    <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
                                            placeholder="Nombre"
                                            name="name"
-                                           value="{{ old('username') }}"
+                                           value="{{ old('name', $name) }}"
+                                           required
                                            autofocus
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                  <i class="material-icons">fingerprint</i>
+                                                </span>
+                                    </div>
+                                    <input type="text" class="form-control{{ $errors->has('user_name') ? ' is-invalid' : '' }}"
+                                           placeholder="Nombre de Usuario"
+                                           name="user_name" value="{{ old('user_name') }}" required
                                     >
                                 </div>
                                 <div class="input-group">
@@ -38,8 +60,34 @@
                                     ? ' is-invalid'
                                     : '' }}"
                                            name="email"
-                                           value="{{ old('email') }}"
+                                           value="{{ old('email', $email) }}"
                                            placeholder="Email"
+                                           autofocus
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                  <i class="material-icons">home</i>
+                                                </span>
+                                    </div>
+                                    <input type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
+                                           placeholder="Dirección del Usuario"
+                                           name="address" value="{{ old('address') }}" required
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="material-icons">phone</i>
+                                        </span>
+                                    </div>
+                                    <input id="phone" type="tel" class="form-control{{ $errors->has('email')
+                                    ? ' is-invalid'
+                                    : '' }}"
+                                           name="phone"
+                                           value="{{ old('phone') }}"
+                                           placeholder="Teléfono"
                                            autofocus
                                     >
                                 </div>
@@ -76,6 +124,6 @@
                 </div>
             </div>
         </div>
-        @include ('partials.footer')
     </div>
+    @include ('partials.footer')
 @endsection

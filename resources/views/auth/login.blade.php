@@ -17,13 +17,14 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <i class="material-icons">mail</i>
+                                            <i class="material-icons">fingerprint</i>
                                         </span>
                                     </div>
-                                    <input id="email" type="email" class="form-control{{ $errors->has('email')
+                                    <input id="user_name" type="text" class="form-control{{ $errors->has('user_name')
                                     ? ' is-invalid'
-                                    : '' }}" name="email"
-                                           value="{{ old('email') }}" placeholder="Email" autofocus>
+                                    : '' }}"
+                                           name="user_name"
+                                           value="{{ old('user_name') }}" placeholder="User_name" autofocus>
                                 </div>
                                 <div class="input-group">
                                     <div class="input-group-prepend">

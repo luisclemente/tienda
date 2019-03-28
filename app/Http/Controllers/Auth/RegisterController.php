@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,8 +51,11 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['nullable', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required'],
+            'address' => ['required'],
+            'user_name' => ['required'],
         ]);
     }
 
@@ -65,8 +69,17 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'email' => $data['email'] ?: '',
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'user_name' => $data['user_name'],
             'password' => Hash::make($data['password']),
         ]);
     }
+   public function showRegistrationForm(Request $request)
+   {
+      $name = $request->input('name');
+      $email = $request->input('email');
+      return view('auth.register', compact('name', 'email'));
+   }
 }

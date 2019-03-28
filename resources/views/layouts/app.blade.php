@@ -19,6 +19,7 @@
     <link href="{{ asset ('css/material-kit.css?v=2.0.4') }}" rel="stylesheet"/>
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{ asset ('demo/demo.css') }}" rel="stylesheet"/>
+    @yield('styles')
 </head>
 
 <body class="@yield('body-class')">
@@ -37,24 +38,6 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                {{--<li class="dropdown nav-item">
-                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <i class="material-icons">apps</i> Components
-                    </a>
-                    <div class="dropdown-menu dropdown-with-icons">
-                        <a href="../index.html" class="dropdown-item">
-                            <i class="material-icons">layers</i> All Components
-                        </a>
-                        <a href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html" class="dropdown-item">
-                            <i class="material-icons">content_paste</i> Documentation
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)" onclick="scrollToDownload()">
-                        <i class="material-icons">cloud_download</i> Download
-                    </a>
-                </li>--}}
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -69,11 +52,13 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
+                        </a>                        
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url ('/home') }}">Dashboard</a>
                             @if( auth()->user ()->admin )
-                            <a class="dropdown-item" href="{{ url('/admin/products') }}">Gestionar productos</a>
+                            {{--<a class="dropdown-item" href="{{ url('/admin/products') }}">Gestionar productos</a>--}}
+                            <a class="dropdown-item" href="{{ route('listado_productos') }}">Gestionar productos</a>
+                            <a class="dropdown-item" href="{{ url('/admin/categories') }}">Gestionar categorías</a>
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -88,21 +73,6 @@
                         </div>
                     </li>
                 @endguest
-                {{--<li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank" data-original-title="Follow us on Twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank" data-original-title="Like us on Facebook">
-                        <i class="fa fa-facebook-square"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank" data-original-title="Follow us on Instagram">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                </li>--}}
             </ul>
         </div>
     </div>
@@ -122,6 +92,7 @@
 <script src="{{ asset ('js/plugins/jquery.sharrre.js') }}" type="text/javascript"></script>
 <!-- Control Center for Material Kit: parallax effects, scripts for the example pages etc -->
 <script src="{{ asset ('js/material-kit.js?v=2.0.4') }}" type="text/javascript"></script>
+@yield('scripts')
 </body>
 
 </html>

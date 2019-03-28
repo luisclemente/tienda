@@ -220,5 +220,12 @@ FORMULARIO DE REGISTRO ORIGINAL SCAFOLDING LARAVEL
          </button>
       </div>
    </div>
-</form>
+
+   /****************************************************/
+   <div class="card-footer justify-content-center">
+      <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
+      <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-instagram"></i></a>
+      <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-facebook-square"></i></a>
+   </div>
+
 

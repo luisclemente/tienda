@@ -1,6 +1,43 @@
 @extends('layouts.app')
 @section('title', 'Bienvenido a Tienda Luis')
 @section('body-class', 'landing-page sidebar-collapse')
+@section('styles')
+    <style>
+        .tt-query {
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+        .tt-hint {
+            color: #999
+        }
+        .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+            width: 200px;
+            margin-top: 4px;
+            padding: 4px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        }
+        .tt-suggestion {
+            padding: 3px 20px;
+            line-height: 24px;
+        }
+        .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+            color: #fff;
+            background-color: #0097cf;
+        }
+        .tt-suggestion p {
+            margin: 0;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="page-header header-filter" data-parallax="true"
          style="background-image: url('{{ asset ('img/profile_city.jpg') }}')">
@@ -64,31 +101,30 @@
                 </div>
             </div>
             <div class="section text-center">
-                <h2 class="title">Productos disponibles</h2>
+                <h2 class="title">Categorias</h2>
+                <form action="{{ url ('/search') }}">
+                    <input type="text" placeholder="¿Qúe producto buscas?" name="query" id="search">
+                    <button type="submit" class="btn btn-primary btn-just-icon">
+                        <i class="material-icons">search</i>
+                    </button>
+                </form>
                 <div class="team">
                     <div class="row">
-                        @foreach($products as $product)
+                        @foreach($categories as $category)
                             <div class="col-md-4">
                                 <div class="team-player">
                                     <div class="card card-plain">
                                         <div class="col-md-6 ml-auto mr-auto">
-                                            <img src="{{ $product->featured_image_url  }}"
+                                            <img src="{{ $category->featured_image_url }}"
                                                  alt="Thumbnail Image"
                                                  class="img-raised rounded-circle img-fluid">
                                         </div>
-                                        <h4 class="card-title">{{ $product->name }}
+                                        <h4 class="card-title">
+                                            <a href="{{ url('/categories/' . $category->id) }}">{{ $category->name }}</a>
                                             <br>
-                                            <small class="card-description text-muted">{{ $product->category->name }}</small>
                                         </h4>
                                         <div class="card-body">
-                                            <p class="card-description">{{ $product->description }}</p>
-                                        </div>
-                                        <div class="card-footer justify-content-center">
-                                            <a href="#" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="btn btn-link btn-just-icon"><i
-                                                        class="fa fa-instagram"></i></a>
-                                            <a href="#" class="btn btn-link btn-just-icon"><i
-                                                        class="fa fa-facebook-square"></i></a>
+                                            <p class="card-description">{{ $category->description }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -104,29 +140,25 @@
                         <h4 class="text-center description">Regístrate ingresando tus datos básicos, y prodrás realizar
                             tus pedidos a través de nuestro carrito de compras. Si aún no te decides, de todas formas,
                             con tu cuenta de usuario podrás hacer todas tus consultas sin compromiso.</h4>
-                        <form class="contact-form">
+                        <form class="contact-form" method="get" action="{{ url('/register') }}">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Nombre</label>
-                                        <input type="email" class="form-control">
+                                        <input type="text" class="form-control" name="name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="bmd-label-floating">Correo electrónico</label>
-                                        <input type="email" class="form-control">
+                                        <input type="email" class="form-control" name="email">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleMessage" class="bmd-label-floating">Tu mensaje</label>
-                                <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
                             </div>
                             <div class="row">
                                 <div class="col-md-4 ml-auto mr-auto text-center">
                                     <button class="btn btn-primary btn-raised">
-                                        Envíar consulta
+                                        Registrar
                                     </button>
                                 </div>
                             </div>
@@ -137,5 +169,27 @@
         </div>
     </div>
     @include ('partials.footer')
+@endsection
+@section('scripts')
+    <script src="{{ asset ('js/typeahead.bundle.min.js') }}" type="text/javascript"></script>
+    <script>
+        $(function () {
+            var products = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+               // local: ['hola', 'prueba1', 'prueba2', 'hola2']
+                 prefetch: '{{ url("/products/json") }}'
+            });
+            $('#search').typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                },
+                {
+                    name: 'products',
+                    source: products // objeto bloodhound
+                });
+        });
+    </script>
 @endsection
 

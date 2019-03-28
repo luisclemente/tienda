@@ -27,4 +27,11 @@ class Product extends Model
          return $featuredImage->url;
       return '/images/products/default.png'; // Si el producto no tiene imágenes, se le asigna una por defecto
    }
+   public function getCategoryNameAttribute ()
+   {
+      if($this->category )
+       return $this->category->name;
+
+      return 'General';
+   }
 }
