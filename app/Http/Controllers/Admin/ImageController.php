@@ -10,34 +10,12 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-   public function index ( $id )
+   public function index ( Product $product )
    {
-      $product = Product::find ( $id );
-      $images = $product->images()->orderBy('featured', 'DESC')->get();
+      $images = $product->images ()->orderBy ( 'featured', 'DESC' )->get ();
       return view ( 'admin.products.images.index', compact ( 'product', 'images' ) );
    }
 
-   /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
-   public function create ()
-   {
-      //
-   }
-
-   /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @return \Illuminate\Http\Response
-    */
    public function store ( Request $request, $id )
    {
       // guardar la imagen en nuestro proyecto
@@ -54,50 +32,9 @@ class ImageController extends Controller
          $productImage->save ();
       }
       return back ();
-
    }
 
-   /**
-    * Display the specified resource.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function show ( $id )
-   {
-      //
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function edit ( $id )
-   {
-      //
-   }
-
-   /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function update ( Request $request, $id )
-   {
-
-   }
-
-   /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function destroy ( Request $request, $id )
+   public function destroy ( Request $request )
    {
       // Eliminar el archivo
       $productImage = ProductImage::find ( $request->image_id );
@@ -115,18 +52,16 @@ class ImageController extends Controller
       return back ();
    }
 
-   public function select ( $product_id, $image_id )
+   public function featured ( $product, ProductImage $productImage )
    {
       // Quitamos el destacado a la imagen que lo tuviera
-      ProductImage::where('product_id', $product_id)->update([
+      ProductImage::where ( 'product_id', $product )->update ( [
          'featured' => false
-      ]);
-
+      ] );
       // Destacamos una imagen del producto
-      $productImage = ProductImage::find ( $image_id );
       $productImage->featured = true;
       $productImage->save ();
 
-      return back();
+      return back ();
    }
 }

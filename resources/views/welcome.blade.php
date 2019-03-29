@@ -8,10 +8,12 @@
             -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         }
+
         .tt-hint {
             color: #999
         }
-        .tt-menu {    /* used to be tt-dropdown-menu in older versions */
+
+        .tt-menu { /* used to be tt-dropdown-menu in older versions */
             width: 200px;
             margin-top: 4px;
             padding: 4px 0;
@@ -21,18 +23,21 @@
             -webkit-border-radius: 4px;
             -moz-border-radius: 4px;
             border-radius: 4px;
-            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-            -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-            box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
         }
+
         .tt-suggestion {
             padding: 3px 20px;
             line-height: 24px;
         }
-        .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+
+        .tt-suggestion.tt-cursor, .tt-suggestion:hover {
             color: #fff;
             background-color: #0097cf;
         }
+
         .tt-suggestion p {
             margin: 0;
         }
@@ -102,7 +107,7 @@
             </div>
             <div class="section text-center">
                 <h2 class="title">Categorias</h2>
-                <form action="{{ url ('/search') }}">
+                <form action="{{ route ('search_product') }}">
                     <input type="text" placeholder="¿Qúe producto buscas?" name="query" id="search">
                     <button type="submit" class="btn btn-primary btn-just-icon">
                         <i class="material-icons">search</i>
@@ -120,7 +125,7 @@
                                                  class="img-raised rounded-circle img-fluid">
                                         </div>
                                         <h4 class="card-title">
-                                            <a href="{{ url('/categories/' . $category->id) }}">{{ $category->name }}</a>
+                                            <a href="{{ route ('category_show', $category->id) }}">{{ $category->name }}</a>
                                             <br>
                                         </h4>
                                         <div class="card-body">
@@ -177,8 +182,7 @@
             var products = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.whitespace,
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
-               // local: ['hola', 'prueba1', 'prueba2', 'hola2']
-                 prefetch: '{{ url("/products/json") }}'
+                prefetch: '{{ url("/products/json") }}'
             });
             $('#search').typeahead({
                     hint: true,

@@ -6,6 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+   protected $fillable = ['name', 'description', 'price', 'long_description', 'category_id'];
+
+   public static $rules = [
+      'name' => 'required | min:3',
+      'description' => 'required | max:200',
+      'price' => 'required | numeric | min:0'
+   ];
+   public static $messages = [
+      'name.required' => 'El nombre es obligatorio',
+      'name.min' => 'El nombre ha de tener al menos 3 caracteres',
+      'description.required' => 'La descripción es obligatoria',
+      'description.max' => 'La descripción no puede tener más de 200 caracteres',
+      'price.required' => 'El precio es obligatorio',
+      'price.numeric' => 'El precio debe ser un número',
+      'price.min' => 'El precio mínimo es cero'
+   ];
    public function category ()
    {
       return $this->belongsTo ( Category::class );
@@ -27,6 +43,7 @@ class Product extends Model
          return $featuredImage->url;
       return '/images/products/default.png'; // Si el producto no tiene imágenes, se le asigna una por defecto
    }
+
    public function getCategoryNameAttribute ()
    {
       if($this->category )

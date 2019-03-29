@@ -11,8 +11,8 @@
                 <h2 class="title">Listado de categorías</h2>
                 <div class="team">
                     <div class="row justify-content-center">
-                            <a href="{{ url('/admin/categories/create') }}"
-                               class="btn btn-primary btn-round">Nueva categoría</a>
+                        <a href="{{ route ('category_create') }}"
+                           class="btn btn-primary btn-round">Nueva categoría</a>
                         <table class="table mt-4">
                             <thead>
                             <tr>
@@ -35,18 +35,20 @@
                                     </td>
                                     <td class="td-actions text-right">
                                         <form method="post"
-                                              action="{{ url('admin/categories/' . $category->id ) }}">
+                                              action="{{ route ('category_destroy', $category->id ) }}">
                                             @csrf
                                             @method('delete')
-                                            <a type="button" rel="tooltip" class="btn btn-info">
+                                            <a href="{{ route ('category_show', $category->id ) }}"
+                                               rel="tooltip" title="Ver categoría" class="btn btn-info">
                                                 <i class="fa fa-info" title="Ver categoría"></i>
                                             </a>
-                                            <a href="{{ url ('admin/categories/' . $category->id . '/edit') }}"
+                                            <a href="{{ route ('category_edit', $category->id ) }}"
                                                rel="tooltip"
                                                class="btn btn-success" title="Editar categoría">
                                                 <i class="material-icons">edit</i>
                                             </a>
-                                            <button type="submit" rel="tooltip" class="btn btn-danger" title="Eliminar">
+                                            <button type="submit" rel="tooltip" class="btn btn-danger"
+                                                    title="Eliminar categoría">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </form>

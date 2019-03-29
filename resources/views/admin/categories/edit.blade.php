@@ -18,7 +18,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ url ('admin/categories/' . $category->id . '/update') }}"
+                <form action="{{ route ('category_update', $category->id ) }}"
                       method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
@@ -43,7 +43,7 @@
                     <textarea class="form-control" placeholder="Descripcion de la categoría"
                               rows="5" name="description">{{ old('description', $category->description) }}</textarea>
                     <button class="btn btn-primary">Guardar cambios</button>
-                    <a href="{{ url('admin/categories') }}" class="btn btn-default">Cancelar</a>
+                    <a href="{{ route ('admin_categories_index') }}" class="btn btn-default">Cancelar</a>
                 </form>
             </div>
         </div>

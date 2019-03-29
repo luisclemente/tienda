@@ -30,7 +30,7 @@
                     <h3 class="title">Resultados de la búsqueda</h3>
                 </div>
                 <div class="description text-center">
-                    <p>Se encontraron {{ $products->count() }} resultados para el término {{ $query }}</p>
+                    <p>Se encontraron {{ $products->count() }} Resultados para el término {{ $query }}</p>
                 </div>
                 <div class="team text-center">
                     <div class="row">
@@ -56,7 +56,7 @@
                         @endforeach
                     </div>
                     <div class="row justify-content-center">
-                        {{ $products->links() }}
+                        {{--{{ $products->links() }}--}}
                     </div>
                 </div>
             </div>

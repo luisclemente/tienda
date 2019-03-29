@@ -18,7 +18,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ url('/admin/categories') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route ('category_store') }}" method="post" class="form" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-sm-9">
@@ -31,11 +31,17 @@
                             <label class="control-label">Imagen de la categoría</label>
                             <input type="file" name="image">
                         </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group label-floating">
+                                <label class="control-label" for="textarea">Descripción de la categoría</label>
+                                <textarea class="form-control"
+                                          rows="5" name="description">{{ old('description') }}</textarea>
+                                <button class="btn btn-primary">Registrar categoría</button>
+                                <a href="{{ route ('admin_categories_index') }}" class="btn btn-default">Cancelar</a>
+                            </div>
+                        </div>
                     </div>
-                    <textarea class="form-control" placeholder="Descripción de la categoría"
-                              rows="5" name="description">{{ old('description') }}</textarea>
-                    <button class="btn btn-primary">Registrar categoría</button>
-                    <a href="{{ url ('/admin/categories') }}" class="btn btn-default">Cancelar</a>
                 </form>
             </div>
         </div>

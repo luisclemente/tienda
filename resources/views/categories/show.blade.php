@@ -44,7 +44,7 @@
                                                  class="img-raised rounded-circle img-fluid">
                                         </div>
                                         <h4 class="card-title">
-                                            <a href="{{ url('/products/' . $product->id) }}">{{ $product->name }}</a>
+                                            <a href="{{ route ('product_show', $product->id) }}">{{ $product->name }}</a>
                                             <br>
                                         </h4>
                                         <div class="card-body">
@@ -59,31 +59,6 @@
                         {{ $products->links() }}
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="modalAddtoCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Seleccione una cantidad</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ url('/cart') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <input type="number" name="quantity" value="1" class="form-control">
-                        <input type="hidden" name="product_id" value="{{ $category->id }}">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="submit" class="btn btn-primary">Añadir al carrito</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

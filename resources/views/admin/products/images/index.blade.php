@@ -9,16 +9,18 @@
         <div class="container">
             <div class="section text-center">
                 <h2 class="title">Imágenes del producto "{{ $product->name }}"</h2>
+                {{-- El action no necesita ruta ya que cuando estamos en esta vista la ruta es identica a la ruta
+                    update, solo que ésta tiene el verbo post --}}
                 <form action="" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="photo" required>
                     <button type="submit" class="btn btn-primary btn-round">Subir nueva imágen</button>
-                    <a href="{{ url('admin/products') }}" class="btn btn-default btn-round">Volver al listado de
+                    <a href="{{ route ('admin_products_index') }}" class="btn btn-default btn-round">Volver al listado de
                         productos</a>
                 </form>
                 <hr>
                 <div class="row">
-                    @foreach($images as $image)
+                    @foreach( $images as $image )
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-body">
@@ -35,7 +37,7 @@
                                                 <i class="material-icons">favorite</i>
                                             </button>
                                         @else
-                                            <a href="{{ url ('admin/products/' . $product->id . '/images/select/' . $image->id ) }}"
+                                            <a href="{{ route ('product_image_featured', [ $product, $image ]) }}"
                                                class="btn btn-primary btn-fab btn-fab-mini btn-round">
                                                 <i class="material-icons">favorite</i>
                                             </a>

@@ -32,11 +32,22 @@
                 <div class="description text-center">
                     <p>{{ $product->long_description }}</p>
                 </div>
-                <div class="text-center">
-                    <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddtoCart">
-                        <i class="material-icons">add</i> Añadir al carrito de compras
-                    </button>
-                </div>
+                @foreach(auth()->user()->cart->details as $detail )
+                    @if ($detail->product_id == $product->id)
+                        {{ $contador++ }}
+                    @endif
+                @endforeach
+                @if($contador == 0)
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddtoCart">
+                            <i class="material-icons">add</i> Añadir al carrito de compras
+                        </button>
+                    </div>
+                @else
+                    <div class="text-center text-danger">
+                        <p>Este producto está añadido a tu carrito</p>
+                    </div>
+                @endif
                 <div class="text-center gallery">
                     <div class="row">
                         <div class="col-md-3 ml-auto">
@@ -65,7 +76,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{ url('/cart') }}" method="post">
+                <form action="{{ route ('cartDetail_store') }}" method="post">
                     @csrf
                     <div class="modal-body">
                         <input type="number" name="quantity" value="1" class="form-control">

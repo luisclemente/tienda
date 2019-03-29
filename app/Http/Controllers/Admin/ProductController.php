@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
@@ -20,124 +21,41 @@ class ProductController extends Controller
       return view ( 'admin.products.index', compact ( 'products' ) );
    }
 
-   /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
    public function create ()
    {
-      $categories = Category::orderBy('name')->get();
-      return view ( 'admin.products.create', compact('categories') );
+      $categories = Category::orderBy ( 'name' )->get ();
+      return view ( 'admin.products.create', compact ( 'categories' ) );
    }
 
    /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @return \Illuminate\Http\Response
     * @throws \Illuminate\Validation\ValidationException
     */
    public function store ( Request $request )
    {
-      $this->validate($request, [
-         'name' => 'required | min:3',
-         'description' => 'required | max:200',
-         'price' => 'required | numeric | min:0'
-      ], [
-         'name.required' => 'El nombre es obligatorio',
-         'name.min' => 'El nombre ha de tener al menos 3 caracteres',
-         'description.required' => 'La descripción es obligatoria',
-         'description.max' => 'La descripción no puede tener más de 200 caracteres',
-         'price.required' => 'El precio es obligatorio',
-         'price.numeric' => 'El precio debe ser un número',
-         'price.min' => 'El precio mínimo es cero'
-      ]);
-
-      // dd($request->all());
-      $product = new Product();
-      $product->name = $request->input ( 'name' );
-      $product->description = $request->input ( 'description' );
-      $product->price = $request->input ( 'price' );
-      $product->long_description = $request->input ( 'long_description' );
-      $product->category_id = $request->input ( 'category_id' );
-
-      $product->save ();
-
-      return redirect ( '/admin/products' );
+      $this->validate ( $request, Product::$rules, Product::$messages );
+      Product::create ( Input::all () ); // Es igual a  Product::create ( $request->all () );
+      return redirect ()->route ( 'admin_products_index' );
    }
 
-   /**
-    * Display the specified resource.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function show ( $id )
+   public function edit ( Product $product )
    {
-
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function edit ( $id )
-   {
-      $categories = Category::orderBy('name')->get();
-      $product = Product::find ( $id );
+      $categories = Category::orderBy ( 'name' )->get ();
       return view ( 'admin.products.edit', compact ( 'product', 'categories' ) );
    }
 
    /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @param  int $id
-    * @return \Illuminate\Http\Response
     * @throws \Illuminate\Validation\ValidationException
     */
-   public function update ( Request $request, $id )
+   public function update ( Request $request, Product $product )
    {
-      $this->validate($request, [
-         'name' => 'required | min:3',
-         'description' => 'required | max:200',
-         'price' => 'required | numeric | min:0'
-      ], [
-         'name.required' => 'El nombre es obligatorio',
-         'name.min' => 'El nombre ha de tener al menos 3 caracteres',
-         'description.required' => 'La descripción es obligatoria',
-         'description.max' => 'La descripción no puede tener más de 200 caracteres',
-         'price.required' => 'El precio es obligatorio',
-         'price.numeric' => 'El precio debe ser un número',
-         'price.min' => 'El precio mínimo es cero'
-      ]);
-
-      $product = Product::find ( $id );
-      $product->name = $request->input ( 'name' );
-      $product->description = $request->input ( 'description' );
-      $product->price = $request->input ( 'price' );
-      $product->long_description = $request->input ( 'long_description' );
-      $product->category_id = $request->input ( 'category_id' );
-
-      $product->save ();
-
-      return redirect ( '/admin/products' );
+      $this->validate ( $request, Product::$rules, Product::$messages );
+      $product->update ( $request->all () );
+      return redirect ( Input::get ( 'paginate_product_page' ) ); // Redirige al paginate del producto actualizado
    }
 
-   /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function destroy ( $id )
+   public function destroy ( Product $product )
    {
-      $product = Product::find ( $id );
       $product->delete ();
-
       return back ();
    }
 }

@@ -9,10 +9,10 @@
         <div class="container">
             <div class="section text-center">
                 <h2 class="title">Listado de productos</h2>
-                <div class="team text-center">
-                    <div class="row text-center">
-                        <a href="{{ url('admin/products/create') }}"
-                           class="btn btn-primary btn-round">Nuevo Producto</a>
+                <div class="team">
+                    <div class="row justify-content-center">
+                        <a href="{{ route('product_create') }}"
+                           class="btn btn-primary btn-round mb-4">Nuevo Producto</a>
                         <table class="table">
                             <thead>
                             <tr>
@@ -34,18 +34,18 @@
                                     <td class="text-right">&euro; {{ $product->price }}</td>
                                     <td class="td-actions text-right">
                                         <form method="post"
-                                              action="{{ url('admin/products/' . $product->id ) }}">
+                                              action="{{ route('product_destroy', $product ) }}">
                                             @csrf
                                             @method('delete')
-                                            <a href="{{ url('/products/' . $product->id) }}"
+                                            <a href="{{ route('product_show', $product) }}"
                                                rel="tooltip" class="btn btn-info" title="Ver producto" target="_blank">
                                                 <i class="fa fa-info"></i>
                                             </a>
-                                            <a href="{{ url ('admin/products/' . $product->id . '/edit') }}" rel="tooltip"
-                                               class="btn btn-success" title="Editar producto">
+                                            <a href="{{ route ('product_edit', $product->id ) }}"
+                                               rel="tooltip" class="btn btn-success" title="Editar producto">
                                                 <i class="material-icons">edit</i>
                                             </a>
-                                            <a href="{{ url ('admin/products/' . $product->id . '/images') }}"
+                                            <a href="{{ route ('product_images_index', $product ) }}"
                                                type="button" rel="tooltip" class="btn btn-warning"
                                                title="Imagenes del producto">
                                                 <i class="fa fa-image"></i>

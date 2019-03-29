@@ -30,12 +30,14 @@ class CategoryController extends Controller
     *
     * @param  \Illuminate\Http\Request $request
     * @return \Illuminate\Http\Response
+    *
     * @throws \Illuminate\Validation\ValidationException
     */
    public function store ( Request $request )
    {
       $this->validate ( $request, Category::$rules, Category::$messages );
-      $category = Category::create ( $request->only ( 'name', 'description' ) );
+      $category = Category::create ( $request->all () );
+
       if ( $request->hasFile ( 'image' ) ) {
          // guardar la imagen en nuestro proyecto
          $file = $request->file ( 'image' );
@@ -49,7 +51,7 @@ class CategoryController extends Controller
             $category->save (); // UPDATE
          }
       }
-      return redirect ( '/admin/categories' );
+      return redirect ()->route ('admin_categories_index');
    }
 
    /**
@@ -85,7 +87,7 @@ class CategoryController extends Controller
    public function update ( Request $request, Category $category )
    {
       $this->validate ( $request, Category::$rules, Category::$messages );
-      $category->update ( $request->only ( 'name', 'description' ) );
+      $category->update ( $request->all () );
 
       if ( $request->hasFile ( 'image' ) ) {
          // guardar la imagen en nuestro proyecto
@@ -103,7 +105,6 @@ class CategoryController extends Controller
 
             if ( $saved )
                File::delete ( $previousPath );
-
          }
       }
       return redirect ( '/admin/categories' );
@@ -118,6 +119,7 @@ class CategoryController extends Controller
     */
    public function destroy ( Category $category )
    {
+      $category->products ()->update ( [ 'category_id' => null ] );
       $category->delete ();
       return back ();
    }

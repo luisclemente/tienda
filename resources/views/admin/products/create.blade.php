@@ -9,7 +9,16 @@
         <div class="container">
             <div class="section text-center">
                 <h2 class="title">Registrar nuevo producto</h2>
-                <form action="{{ url('store') }}" method="post">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <form action="{{ route('product_store') }}" method="post">
                     @csrf
                     <div class="row">
                         <div class="col-sm-9">
@@ -52,7 +61,7 @@
                                 <textarea class="form-control" rows="5" id="textarea"
                                           name="long_description">{{ old('long_description') }}</textarea>
                                 <button class="btn btn-primary">Registrar producto</button>
-                                <a href="{{ url ('/admin/products') }}" class="btn btn-default">Cancelar</a>
+                                <a href="{{ route ('admin_products_index') }}" class="btn btn-default">Cancelar</a>
                             </div>
                         </div>
                     </div>

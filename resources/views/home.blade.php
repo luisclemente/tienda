@@ -32,7 +32,11 @@
                     </li>
                 </ul>
                 <hr>
-                <p>Tu carrito de compras presenta {{ auth()->user ()->cart->details->count() }} productos</p>
+                @if(auth()->user ()->cart->details->count() == 1)
+                    <p>Tu carrito de compras presenta {{ auth()->user ()->cart->details->count() }} producto</p>
+                @else
+                    <p>Tu carrito de compras presenta {{ auth()->user ()->cart->details->count() }} productos</p>
+                @endif
                 <table class="table">
                     <thead>
                     <tr>
@@ -41,6 +45,7 @@
                         <th class="text-right">Precio</th>
                         <th class="text-right">Cantidad</th>
                         <th class="text-right">Subtotal</th>
+                        <th class="text-right">Modificar</th>
                         <th class="text-right">Opciones</th>
                     </tr>
                     </thead>
@@ -51,23 +56,39 @@
                                 <img src="{{ $detail->product->featured_image_url }}" height="50">
                             </td>
                             <td>
-                                <a href="{{ url('/products/' . $detail->product->id) }}"
+                                <a href="{{ route ('product_show', $detail->product->id) }}"
                                    target="_blank">{{ $detail->product->name }}</a>
                             </td>
                             <td class="text-right">&euro; {{ $detail->product->price }}</td>
                             <td class="text-right">{{ $detail->quantity }}</td>
                             <td class="text-right">&euro;{{ $detail->quantity * $detail->product->price}}</td>
                             <td class="td-actions text-right">
-                                <form method="post"
-                                      action="{{ url('/cart/' . $detail->id ) }}">
+                                <form action="{{ route ('cartDetail_update', $detail) }}" method="post"
+                                      class="">
+                                    @csrf
+                                    <div class="btn-group-vertical">
+                                        <button type="submit" name="anadir"
+                                                rel="tooltip" class="btn btn-success btn-sm" title="Añadir unidad">
+                                            <i class="material-icons">add</i>
+                                        </button>
+                                        <button type="submit" name="quitar"
+                                                rel="tooltip" class="btn btn-warning btn-sm" title="Quitar unidad">
+                                            <i class="material-icons">remove</i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </td>
+                            <td class="td-actions text-right">
+                                <form method="post" class=""
+                                      action="{{ route ('cart_destroy', $detail->id ) }}">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ url('/products/' . $detail->product->id) }}"
-                                       target="_blank" rel="tooltip" class="btn btn-info" title="Ver producto">
+                                    <a href="{{ route ('product_show', $detail->product->id) }}"
+                                       target="_blank" rel="tooltip" class="btn btn-info btn-sm" title="Ver producto">
                                         <i class="fa fa-info"></i>
                                     </a>
-                                    <button type="submit" rel="tooltip" class="btn btn-danger" title="Eliminar">
-                                        <i class="material-icons">close</i>
+                                    <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" title="Eliminar">
+                                        <i class="material-icons">delete_forever</i>
                                     </button>
                                 </form>
                             </td>
@@ -75,7 +96,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                <form action="{{ url('/order') }}" method="post">
+                <form action="{{ route ('place_order') }}" method="post">
                     @csrf
                     <button class="btn btn-primary btn-round">
                         <i class="material-icons">done</i>Realizar pedido

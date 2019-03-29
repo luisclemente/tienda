@@ -24,37 +24,42 @@ Route::get ( '/', function () {
 
 Auth::routes ();
 
-Route::get ( '/search', 'SearchController@show' );
+Route::get ( '/search', 'SearchController@show' )->name ('search_product');
 Route::get ( '/products/json', 'SearchController@data' );
 
 Route::get ( '/home', 'HomeController@index' )->name ( 'home' );
-Route::get ( '/products/{product}', 'ProductController@show' ); // LLamada en welcome.blade (nombre del producto)
-Route::get ( '/categories/{category}', 'CategoryController@show' );
 
-Route::post ( '/cart', 'CartDetailController@store' );
-Route::delete ( '/cart/{detail}', 'CartDetailController@destroy' );
+Route::get ( '/products/{product}', 'ProductController@show' )->name ('product_show');
 
-Route::post ( '/order', 'CartController@update' );
+Route::get ( '/categories/{category}', 'CategoryController@show' )->name ('category_show');
+
+Route::post ( '/cart', 'CartDetailController@store' )->name ('cartDetail_store');
+Route::delete ( '/cart/{detail}', 'CartDetailController@destroy' )->name ('cart_destroy');
+Route::post ( '/cart/{detail}', 'CartDetailController@update' )->name ('cartDetail_update');
+
+Route::post ( '/order', 'CartController@update' )->name ('place_order');
 
 Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admin' )->group ( function () {
-   Route::get ( '/products', 'ProductController@index' )->name ('listado_productos'); // listado
-   Route::get ( '/products/create', 'ProductController@create' )->name ( 'create' ); // formulario creación
-   Route::post ( '/products', 'ProductController@store' )->name ( 'store' ); // store
-   Route::get ( '/products/{id}/edit', 'ProductController@edit' )->name ( 'edit' ); // Formulario edición
-   Route::post ( '/products/{id}/update', 'ProductController@update' )->name ( 'update' ); // update
-   Route::delete ( '/products/{id}', 'ProductController@destroy' )->name ( 'destroy' ); // Formulario eliminación
+   Route::get ( '/products', 'ProductController@index' )->name ('admin_products_index');
+   Route::get ( '/products/create', 'ProductController@create' )->name ( 'product_create' );
+   Route::post ( '/products', 'ProductController@store' )->name ( 'product_store' );
+   Route::get ( '/products/{product}', 'ProductController@edit' )->name ( 'product_edit' );
+   Route::post ( '/products/{product}', 'ProductController@update' )->name ( 'product_update' );
+   Route::delete ( '/products/{product}', 'ProductController@destroy' )->name ( 'product_destroy' );
 
-   Route::get ( '/products/{id}/images', 'ImageController@index' ); // listado y formulario creación
-   Route::post ( '/products/{id}/images', 'ImageController@store' ); // store
-   Route::delete ( '/products/{id}/images', 'ImageController@destroy' ); // form eliminar
-   Route::get ( '/products/{id}/images/select/{image}', 'ImageController@select' ); // destacar un imagen
+   //Route::get ( '/products/images/{id}', 'ImageController@index' )->name ('product_images_index'); // listado y formulario creación
+   Route::get ( '/products/images/{product}', 'ImageController@index' )->name ('product_images_index'); // listado y formulario creación
+   Route::post ( '/products/images/{id}', 'ImageController@store' );
+   Route::delete ( '/products/images/{id}', 'ImageController@destroy' );
+   Route::get ( '/products/image/featured/{id}/{productImage}', 'ImageController@featured' )
+      ->name ('product_image_featured'); // destacar un imagen
 
-   Route::get ( '/categories', 'CategoryController@index' ); // listado
-   Route::get ( '/categories/create', 'CategoryController@create' )->name ( 'create' ); // formulario creación
-   Route::post ( '/categories', 'CategoryController@store' )->name ( 'store' ); // store
-   Route::get ( '/categories/{category}/edit', 'CategoryController@edit' )->name ( 'edit' ); // Formulario edición
-   Route::post ( '/categories/{category}/update', 'CategoryController@update' )->name ( 'update' ); // update
-   Route::delete ( '/categories/{category}', 'CategoryController@destroy' )->name ( 'destroy' ); // Formulario eliminación
+   Route::get ( '/categories', 'CategoryController@index' )->name ('admin_categories_index'); // listado
+   Route::get ( '/categories/create', 'CategoryController@create' )->name ( 'category_create' );
+   Route::post ( '/categories', 'CategoryController@store' )->name ( 'category_store' ); // store
+   Route::get ( '/categories/{category}', 'CategoryController@edit' )->name ( 'category_edit' );
+   Route::post ( '/categories/{category}', 'CategoryController@update' )->name ( 'category_update' );
+   Route::delete ( '/categories/{category}', 'CategoryController@destroy' )->name ( 'category_destroy' );
 
 } );
 

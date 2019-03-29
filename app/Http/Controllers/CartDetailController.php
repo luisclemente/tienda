@@ -9,14 +9,31 @@ class CartDetailController extends Controller
 {
    public function store ( Request $request )
    {
-      $carDetail = new CartDetail();
+      $cartDetail = new CartDetail();
+//      user->cart es un accesor que crea un nuevo carrito si no existe y lo devuelve
+      $cartDetail->cart_id = auth ()->user ()->cart->id;
+      $cartDetail->product_id = $request->product_id;
+      $cartDetail->quantity = $request->quantity;
+      $cartDetail->save ();
 
-      $carDetail->cart_id = auth ()->user ()->cart->id; // cart es un accesor en User
-      $carDetail->product_id = $request->product_id;
-      $carDetail->quantity = $request->quantity;
+      return back ()->with ( 'status', 'Producto añadido al carrito' );
+   }
 
-      $carDetail->save ();
-      return back ()->with ('status', 'Producto añadido al carrito');
+   public function update ( Request $request, $cartDetail_id )
+   {
+      $cartDetail = CartDetail::find ( $cartDetail_id );
+
+      if ( $request->has ( 'anadir' ) ) {
+         $cartDetail->addUnitToDetail ();
+         return back ()->with ( 'status', 'Unidad añadida al carrito' );
+      }
+      if ( $request->has ( 'quitar' ) ) {
+         $cartDetail->removeUnitToDetail ();
+         return back ()->with ( 'status', 'Unidad eliminada del carrito' );
+      }
+
+
+
    }
 
    public function destroy ( $detail_id )
