@@ -17,7 +17,8 @@ class ProductController extends Controller
     */
    public function index ()
    {
-      $products = Product::paginate ( 10 );
+      $products = Product::sortable()->paginate ( 10 );
+     // $products = Product::sortBy('name')->paginate ( 10 );
       return view ( 'admin.products.index', compact ( 'products' ) );
    }
 
@@ -57,5 +58,11 @@ class ProductController extends Controller
    {
       $product->delete ();
       return back ();
+   }
+   public function sort ($column)
+   {
+    //   dd($column);
+      $products = Product::orderBy ( 'name', 'ASC' )->paginate ( 10 );
+      return view ( 'admin.products.index', compact ('products'));
    }
 }

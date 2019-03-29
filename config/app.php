@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+       Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 
         /*
          * Application Service Providers...

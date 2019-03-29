@@ -17,10 +17,10 @@
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th class="col-md-2">Nombre</th>
-                                <th class="col-md-4">Descripción</th>
+                                <th class="col-md-2">@sortablelink('name', 'Nombre')</th>
+                                <th class="col-md-4">@sortablelink('description', 'Descripción')</th>
                                 <th>Categoría</th>
-                                <th class="text-right">Precio</th>
+                                <th class="text-right">@sortablelink('price', 'Precio')</th>
                                 <th class="text-right">Opciones</th>
                             </tr>
                             </thead>
@@ -38,19 +38,21 @@
                                             @csrf
                                             @method('delete')
                                             <a href="{{ route('product_show', $product) }}"
-                                               rel="tooltip" class="btn btn-info" title="Ver producto" target="_blank">
+                                               rel="tooltip" class="btn btn-info btn-sm" title="Ver producto"
+                                               target="_blank">
                                                 <i class="fa fa-info"></i>
                                             </a>
                                             <a href="{{ route ('product_edit', $product->id ) }}"
-                                               rel="tooltip" class="btn btn-success" title="Editar producto">
+                                               rel="tooltip" class="btn btn-success btn-sm" title="Editar producto">
                                                 <i class="material-icons">edit</i>
                                             </a>
                                             <a href="{{ route ('product_images_index', $product ) }}"
-                                               type="button" rel="tooltip" class="btn btn-warning"
+                                               type="button" rel="tooltip" class="btn btn-warning btn-sm"
                                                title="Imagenes del producto">
                                                 <i class="fa fa-image"></i>
                                             </a>
-                                            <button type="submit" rel="tooltip" class="btn btn-danger" title="Eliminar">
+                                            <button type="submit" rel="tooltip" class="btn btn-danger btn-sm"
+                                                    title="Eliminar">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </form>
@@ -59,7 +61,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $products->links() }}
+                        {{ $products->appends(\Request::except('page'))->render() }}
                     </div>
                 </div>
             </div>

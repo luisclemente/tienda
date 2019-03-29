@@ -3,10 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
-   protected $fillable = ['name', 'description', 'price', 'long_description', 'category_id'];
+   use Sortable;
+   public $sortable = [ 'name', 'description', 'price', 'category_id' ];
+
+   protected $fillable = [ 'name', 'description', 'price', 'long_description', 'category_id' ];
 
    public static $rules = [
       'name' => 'required | min:3',
@@ -22,6 +26,7 @@ class Product extends Model
       'price.numeric' => 'El precio debe ser un número',
       'price.min' => 'El precio mínimo es cero'
    ];
+
    public function category ()
    {
       return $this->belongsTo ( Category::class );
@@ -31,6 +36,7 @@ class Product extends Model
    {
       return $this->hasMany ( ProductImage::class );
    }
+
    /*
     * Accesor para solucionar el problema en la vista home de productos que no tengan imágenes asociadas.
     */
@@ -46,9 +52,21 @@ class Product extends Model
 
    public function getCategoryNameAttribute ()
    {
-      if($this->category )
-       return $this->category->name;
+      if ( $this->category )
+         return $this->category->name;
 
       return 'General';
+   }
+
+   public function sortColumnTable ()
+   {
+      $name = 'name';
+      $description = 'description';
+      $category = 'category';
+      $price = 'price';
+      $asc = 'ASC';
+      $desc = 'DESC';
+
+
    }
 }

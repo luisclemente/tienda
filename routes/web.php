@@ -41,6 +41,7 @@ Route::post ( '/order', 'CartController@update' )->name ('place_order');
 
 Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admin' )->group ( function () {
    Route::get ( '/products', 'ProductController@index' )->name ('admin_products_index');
+   Route::get ( '/sort/{column}', 'ProductController@sort' )->name ('admin_products_sort');
    Route::get ( '/products/create', 'ProductController@create' )->name ( 'product_create' );
    Route::post ( '/products', 'ProductController@store' )->name ( 'product_store' );
    Route::get ( '/products/{product}', 'ProductController@edit' )->name ( 'product_edit' );
