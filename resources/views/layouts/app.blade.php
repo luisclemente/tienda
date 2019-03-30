@@ -56,7 +56,6 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ route ('home') }}">Dashboard</a>
                             @if( auth()->user ()->admin )
-                            {{--<a class="dropdown-item" href="{{ url('/admin/products') }}">Gestionar productos</a>--}}
                             <a class="dropdown-item" href="{{ route('admin_products_index') }}">Gestionar productos</a>
                             <a class="dropdown-item" href="{{ route('admin_categories_index') }}">Gestionar categorías</a>
                             @endif

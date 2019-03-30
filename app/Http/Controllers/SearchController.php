@@ -21,7 +21,6 @@ class SearchController extends Controller
    public function data ()
    {
       $products = Product::pluck ( 'name' );
-      dd($products);
       return $products;
    }
 }

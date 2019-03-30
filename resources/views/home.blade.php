@@ -19,13 +19,13 @@
                         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
                     -->
                     <li class="nav-item">
-                        <a class="nav-link active" href="#" role="tab" data-toggle="tab">
+                        <a class="nav-link active" href="{{ route ('home') }}">
                             <i class="material-icons">dashboard</i>
                             Carrito de compras
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" role="tab" data-toggle="tab">
+                        <a class="nav-link" href="{{ route ('pending_cart') }}">
                             <i class="material-icons">list</i>
                             Pedidos realizados
                         </a>

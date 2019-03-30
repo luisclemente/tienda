@@ -28,6 +28,7 @@ Route::get ( '/search', 'SearchController@show' )->name ('search_product');
 Route::get ( '/products/json', 'SearchController@data' );
 
 Route::get ( '/home', 'HomeController@index' )->name ( 'home' );
+Route::get ( '/pending', 'HomeController@pending' )->name ( 'pending_cart' );
 
 Route::get ( '/products/{product}', 'ProductController@show' )->name ('product_show');
 

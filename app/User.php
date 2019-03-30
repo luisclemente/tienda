@@ -80,4 +80,11 @@ class User extends Authenticatable
 
       return $cart;
    }
+   public function getCartPendingAttribute ()
+   {
+      $carts = $this->carts ()->where ( 'status', 'pending' )->get();
+      if ( $carts )
+      //   dd($carts);
+         return $carts;
+   }
 }
