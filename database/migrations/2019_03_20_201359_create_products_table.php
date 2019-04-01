@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
          $table->mediumText ( 'description' );
          $table->text ( 'long_description' )->nullable();
          $table->float ( 'price' );
+         $table->integer ( 'stock' );
 
          $table->timestamps ();
       } );

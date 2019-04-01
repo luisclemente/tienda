@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
-use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Controllers\Controller;
 use File;
 
@@ -33,9 +33,8 @@ class CategoryController extends Controller
     *
     * @throws \Illuminate\Validation\ValidationException
     */
-   public function store ( Request $request )
+   public function store ( CategoryRequest $request )
    {
-      $this->validate ( $request, Category::$rules, Category::$messages );
       $category = Category::create ( $request->all () );
 
       if ( $request->hasFile ( 'image' ) ) {
@@ -54,39 +53,13 @@ class CategoryController extends Controller
       return redirect ()->route ('admin_categories_index');
    }
 
-   /**
-    * Display the specified resource.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
-   public function show ( $id )
-   {
-
-   }
-
-   /**
-    * Show the form for editing the specified resource.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
-    */
    public function edit ( Category $category )
    {
       return view ( 'admin.categories.edit', compact ( 'category' ) );
    }
 
-   /**
-    * Update the specified resource in storage.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @param Category $category
-    * @return \Illuminate\Http\Response
-    * @throws \Illuminate\Validation\ValidationException
-    */
-   public function update ( Request $request, Category $category )
+   public function update ( CategoryRequest $request, Category $category )
    {
-      $this->validate ( $request, Category::$rules, Category::$messages );
       $category->update ( $request->all () );
 
       if ( $request->hasFile ( 'image' ) ) {
@@ -111,10 +84,6 @@ class CategoryController extends Controller
    }
 
    /**
-    * Remove the specified resource from storage.
-    *
-    * @param  int $id
-    * @return \Illuminate\Http\Response
     * @throws \Exception
     */
    public function destroy ( Category $category )

@@ -4,21 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
-   /**
-    * Display a listing of the resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
    public function index ()
    {
-      $products = Product::sortable()->paginate ( 10 );
-     // $products = Product::sortBy('name')->paginate ( 10 );
+      $products = Product::sortable ()->paginate ( 10 );
       return view ( 'admin.products.index', compact ( 'products' ) );
    }
 
@@ -28,13 +22,9 @@ class ProductController extends Controller
       return view ( 'admin.products.create', compact ( 'categories' ) );
    }
 
-   /**
-    * @throws \Illuminate\Validation\ValidationException
-    */
-   public function store ( Request $request )
+   public function store ( ProductRequest $request )
    {
-      $this->validate ( $request, Product::$rules, Product::$messages );
-      Product::create ( Input::all () ); // Es igual a  Product::create ( $request->all () );
+      Product::create ( Input::all () ); // Input::all() = $request->all ()
       return redirect ()->route ( 'admin_products_index' );
    }
 
@@ -44,25 +34,19 @@ class ProductController extends Controller
       return view ( 'admin.products.edit', compact ( 'product', 'categories' ) );
    }
 
-   /**
-    * @throws \Illuminate\Validation\ValidationException
-    */
-   public function update ( Request $request, Product $product )
+   public function update ( ProductRequest $request, Product $product )
    {
-      $this->validate ( $request, Product::$rules, Product::$messages );
       $product->update ( $request->all () );
-      return redirect ( Input::get ( 'paginate_product_page' ) ); // Redirige al paginate del producto actualizado
+      return redirect ( Input::get ( 'paginate_product_page' ) ); // Retorna la página del producto actualizado
    }
 
+   /**
+    * @throws \Exception
+    */
    public function destroy ( Product $product )
    {
       $product->delete ();
       return back ();
    }
-   public function sort ($column)
-   {
-    //   dd($column);
-      $products = Product::orderBy ( 'name', 'ASC' )->paginate ( 10 );
-      return view ( 'admin.products.index', compact ('products'));
-   }
+
 }

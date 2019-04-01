@@ -25,7 +25,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route ('pending_cart') }}">
+                        <a class="nav-link" href="{{ route ('ordered_carts') }}">
                             <i class="material-icons">list</i>
                             Pedidos realizados
                         </a>
@@ -46,6 +46,7 @@
                         <th class="text-right">Cantidad</th>
                         <th class="text-right">Subtotal</th>
                         <th class="text-right">Modificar</th>
+                        <th class="text-right">Modificar con modal</th>
                         <th class="text-right">Opciones</th>
                     </tr>
                     </thead>
@@ -59,9 +60,9 @@
                                 <a href="{{ route ('product_show', $detail->product->id) }}"
                                    target="_blank">{{ $detail->product->name }}</a>
                             </td>
-                            <td class="text-right">&euro; {{ $detail->product->price }}</td>
+                            <td class="text-right">&euro; {{ $detail->price() }}</td>
                             <td class="text-right">{{ $detail->quantity }}</td>
-                            <td class="text-right">&euro;{{ $detail->quantity * $detail->product->price}}</td>
+                            <td class="text-right">&euro;{{ $detail->quantity * $detail->price }}</td>
                             <td class="td-actions text-right">
                                 <form action="{{ route ('cartDetail_update', $detail) }}" method="post"
                                       class="">
@@ -77,6 +78,16 @@
                                         </button>
                                     </div>
                                 </form>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" data-toggle="modal"
+                                        id="modificar" data-target="#modalAddtoCart"
+                                        data-productid="{{ $detail->product->id }}"
+                                        data-detailid="{{ $detail->id }}"
+                                        data-quantity="{{ $detail->quantity }}"
+                                >
+                                    <i class="material-icons">add</i> Modificar
+                                </button>
                             </td>
                             <td class="td-actions text-right">
                                 <form method="post" class=""
@@ -105,7 +116,52 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAddtoCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Seleccione una cantidad</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route ('cartDetail_updateWithModal') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="product_id" value="">
+                        <input type="hidden" name="detail_id" value="">
+                        <input type="number" name="quantity" value="" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     @include ('partials.footer')
+@endsection
+@section('scripts')
+    <script>
+        $(document).on('click', '#modificar', function () {
+
+            var product_id = $(this).attr('data-productid');
+            var detail_id = $(this).attr('data-detailid');
+            var quantity = $(this).attr('data-quantity');
+
+            $('#modalAddtoCart input[name=product_id]').val(product_id);
+            $('#modalAddtoCart input[name=detail_id]').val(detail_id);
+            $('#modalAddtoCart input[name=quantity]').val(quantity);
+
+            //$('#modalAddtoCart').showModal();
+
+        });
+    </script>
+
 @endsection
 
 

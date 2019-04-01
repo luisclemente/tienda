@@ -1,9 +1,6 @@
 <?php
 
-use App\Product;
 use App\Category;
-use App\User;
-use App\ProductImage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,15 +25,18 @@ Route::get ( '/search', 'SearchController@show' )->name ('search_product');
 Route::get ( '/products/json', 'SearchController@data' );
 
 Route::get ( '/home', 'HomeController@index' )->name ( 'home' );
-Route::get ( '/pending', 'HomeController@pending' )->name ( 'pending_cart' );
+
+Route::get ( '/ordered_carts', 'CartController@ordered_carts' )->name ( 'ordered_carts' );
 
 Route::get ( '/products/{product}', 'ProductController@show' )->name ('product_show');
 
 Route::get ( '/categories/{category}', 'CategoryController@show' )->name ('category_show');
 
-Route::post ( '/cart', 'CartDetailController@store' )->name ('cartDetail_store');
-Route::delete ( '/cart/{detail}', 'CartDetailController@destroy' )->name ('cart_destroy');
-Route::post ( '/cart/{detail}', 'CartDetailController@update' )->name ('cartDetail_update');
+Route::post ( '/carts', 'CartDetailController@store' )->name ('cartDetail_store');
+Route::delete ( '/carts/{detail}', 'CartDetailController@destroy' )->name ('cart_destroy');
+
+Route::post ( '/carts/{detail}', 'CartDetailController@update' )->name ('cartDetail_update');
+Route::post ( '/updateWithModal', 'CartDetailController@updateWithModal' )->name ('cartDetail_updateWithModal');
 
 Route::post ( '/order', 'CartController@update' )->name ('place_order');
 
@@ -49,7 +49,6 @@ Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admi
    Route::post ( '/products/{product}', 'ProductController@update' )->name ( 'product_update' );
    Route::delete ( '/products/{product}', 'ProductController@destroy' )->name ( 'product_destroy' );
 
-   //Route::get ( '/products/images/{id}', 'ImageController@index' )->name ('product_images_index'); // listado y formulario creación
    Route::get ( '/products/images/{product}', 'ImageController@index' )->name ('product_images_index'); // listado y formulario creación
    Route::post ( '/products/images/{id}', 'ImageController@store' );
    Route::delete ( '/products/images/{id}', 'ImageController@destroy' );
@@ -62,6 +61,9 @@ Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admi
    Route::get ( '/categories/{category}', 'CategoryController@edit' )->name ( 'category_edit' );
    Route::post ( '/categories/{category}', 'CategoryController@update' )->name ( 'category_update' );
    Route::delete ( '/categories/{category}', 'CategoryController@destroy' )->name ( 'category_destroy' );
+
+   Route::get ( '/products/stock/{product}', 'StockController@edit' )->name ( 'stock_edit' );
+   Route::post ( '/products/stock/{product}', 'StockController@update' )->name ( 'stock_update' );
 
 } );
 

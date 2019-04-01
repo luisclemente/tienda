@@ -8,18 +8,6 @@ class Category extends Model
 {
    protected $fillable = [ 'name', 'description' ];
 
-   protected $images_directory = '/images/categories';
-
-   public static $rules = [
-      'name' => 'required|min:3',
-      'description' => 'max:200'
-   ];
-   public static $messages = [
-      'name.required' => 'El nombre es obligatorio',
-      'name.min' => 'El nombre ha de tener al menos 3 caracteres',
-      'description.max' => 'La descripción no puede tener más de 200 caracteres'
-   ];
-
    public function products ()
    {
       return $this->hasMany ( Product::class );

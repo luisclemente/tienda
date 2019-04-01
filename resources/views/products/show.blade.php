@@ -44,8 +44,11 @@
                         </button>
                     </div>
                 @else
-                    <div class="text-center text-danger">
-                        <p>Este producto está añadido a tu carrito</p>
+                    <div class="text-center">
+                        <a class="btn btn-primary btn-round" href="{{ route ('home') }}">
+                            <i class="material-icons">add</i> Este producto ya está en tu carrito. Pulsa para
+                            modificar la cantidad
+                        </a>
                     </div>
                 @endif
                 <div class="text-center gallery">
@@ -81,6 +84,7 @@
                     <div class="modal-body">
                         <input type="number" name="quantity" value="1" class="form-control">
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="price" value="{{ $product->price }}">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

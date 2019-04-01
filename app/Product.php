@@ -8,24 +8,9 @@ use Kyslik\ColumnSortable\Sortable;
 class Product extends Model
 {
    use Sortable;
-   public $sortable = [ 'name', 'description', 'price', 'category_id' ];
+   public $sortable = [ 'name', 'description', 'price', 'category_id', 'stock' ];
 
-   protected $fillable = [ 'name', 'description', 'price', 'long_description', 'category_id' ];
-
-   public static $rules = [
-      'name' => 'required | min:3',
-      'description' => 'required | max:200',
-      'price' => 'required | numeric | min:0'
-   ];
-   public static $messages = [
-      'name.required' => 'El nombre es obligatorio',
-      'name.min' => 'El nombre ha de tener al menos 3 caracteres',
-      'description.required' => 'La descripción es obligatoria',
-      'description.max' => 'La descripción no puede tener más de 200 caracteres',
-      'price.required' => 'El precio es obligatorio',
-      'price.numeric' => 'El precio debe ser un número',
-      'price.min' => 'El precio mínimo es cero'
-   ];
+   protected $fillable = [ 'name', 'description', 'price', 'long_description', 'category_id', 'stock' ];
 
    public function category ()
    {
@@ -56,17 +41,5 @@ class Product extends Model
          return $this->category->name;
 
       return 'General';
-   }
-
-   public function sortColumnTable ()
-   {
-      $name = 'name';
-      $description = 'description';
-      $category = 'category';
-      $price = 'price';
-      $asc = 'ASC';
-      $desc = 'DESC';
-
-
    }
 }

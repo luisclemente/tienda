@@ -62,9 +62,9 @@
                                     <a href="{{ route ('product_show', $detail->product->id) }}"
                                        target="_blank">{{ $detail->product->name }}</a>
                                 </td>
-                                <td class="text-right">&euro; {{ $detail->product->price }}</td>
+                                <td class="text-right">&euro; {{ $detail->price }}</td>
                                 <td class="text-right">{{ $detail->quantity }}</td>
-                                <td class="text-right">&euro;{{ $detail->quantity * $detail->product->price}}</td>
+                                <td class="text-right">&euro;{{ $detail->subtotal}}</td>
                                 <td class="td-actions text-right">
                                     <form method="post" class=""
                                           action="{{ route ('cart_destroy', $detail->id ) }}">

@@ -65,7 +65,7 @@
                                 <label class="control-label" for="textarea">Descripcion extensa del producto</label>
                                 <textarea class="form-control" id="textarea" rows="5"
                                           name="long_description">{{ old('long_description', $product->long_description) }}</textarea>
-                                <button class="btn btn-primary">Guardar cambios</button>
+                                <button class="btn btn-primary" type="submit">Guardar cambios</button>
                                 <a href="{{ route('admin_products_index') }}" class="btn btn-default">Cancelar</a>
                             </div>
                         </div>

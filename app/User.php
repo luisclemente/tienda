@@ -84,7 +84,6 @@ class User extends Authenticatable
    {
       $carts = $this->carts ()->where ( 'status', 'pending' )->get();
       if ( $carts )
-      //   dd($carts);
          return $carts;
    }
 }

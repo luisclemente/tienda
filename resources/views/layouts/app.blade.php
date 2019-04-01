@@ -54,7 +54,7 @@
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>                        
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route ('home') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route ('home', ['product' => '1']) }}">Dashboard</a>
                             @if( auth()->user ()->admin )
                             <a class="dropdown-item" href="{{ route('admin_products_index') }}">Gestionar productos</a>
                             <a class="dropdown-item" href="{{ route('admin_categories_index') }}">Gestionar categorías</a>

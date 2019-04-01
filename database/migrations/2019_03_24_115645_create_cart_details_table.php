@@ -24,6 +24,9 @@ class CreateCartDetailsTable extends Migration
 
          $table->integer ('quantity');
          $table->integer ('discount')->default(0); // % int
+         $table->float ('price')->nullable(); // % int
+         $table->float ('subtotal')->nullable(); // % int
+       //  $table->float ('active_cart_price')->nullable(); // % int
 
          $table->timestamps ();
       } );
