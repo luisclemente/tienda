@@ -8,7 +8,7 @@
     <div class="main main-raised">
         <div class="container">
             <div class="section text-center">
-                <h2 class="title">Dashboard</h2>
+                <h2 class="title">{{ __('Dashboard') }}</h2>
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}

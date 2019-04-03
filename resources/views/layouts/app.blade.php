@@ -52,12 +52,14 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>                        
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route ('home', ['product' => '1']) }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route ('home') }}">Dashboard</a>
                             @if( auth()->user ()->admin )
-                            <a class="dropdown-item" href="{{ route('admin_products_index') }}">Gestionar productos</a>
-                            <a class="dropdown-item" href="{{ route('admin_categories_index') }}">Gestionar categorías</a>
+                                <a class="dropdown-item" href="{{ route('admin_products_index') }}">Gestionar
+                                    productos</a>
+                                <a class="dropdown-item" href="{{ route('admin_categories_index') }}">Gestionar
+                                    categorías</a>
                             @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -70,6 +72,34 @@
                                 @csrf
                             </form>
                         </div>
+                        {{-- prueba desplegable idioma--}}
+                        <div class="collapse navbar-collapse" id="navbarContent">
+                            <!-- Left Side Of Navbar -->
+                            <ul class="navbar-nav mr-auto">
+
+                            </ul>
+
+                            <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item dropdown">
+                                    <a
+                                            class="nav-link dropdown-toggle"
+                                            href="#"
+                                            id="navbarDropdownMenuLink"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">{{ __("Selecciona un idioma") }}</a>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item"
+                                           href="{{ route('set_language', ['es']) }}">{{ __("Español") }}</a>
+                                        <a class="dropdown-item"
+                                           href="{{ route('set_language', ['en']) }}">{{ __("Inglés") }}</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        {{--fin prueba desplegable idioma--}}
                     </li>
                 @endguest
             </ul>

@@ -39,9 +39,16 @@
                 @endforeach
                 @if($contador == 0)
                     <div class="text-center">
-                        <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddtoCart">
-                            <i class="material-icons">add</i> Añadir al carrito de compras
-                        </button>
+                        @if($product->stock == 0)
+                            <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddtoCart">
+                                <i class="material-icons"></i> No quedan unidades
+                            </button>
+                        @else
+                            <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddtoCart">
+                                <i class="material-icons">add</i> Añadir al carrito de compras
+                            </button>
+                        @endif
+
                     </div>
                 @else
                     <div class="text-center">
@@ -74,7 +81,9 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Seleccione una cantidad</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Seleccione una cantidad | Stock: {{ $product->stock }}
+                    </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -85,6 +94,7 @@
                         <input type="number" name="quantity" value="1" class="form-control">
                         <input type="hidden" name="product_id" value="{{ $product->id }}">
                         <input type="hidden" name="price" value="{{ $product->price }}">
+                        <input type="hidden" name="product_stock" value="{{ $product->stock }}">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

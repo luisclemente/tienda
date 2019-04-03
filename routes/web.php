@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/set_language/{lang}', 'Controller@setLanguage')->name ('set_language');
+
 Route::get ( '/', function () {
    $categories = Category::has ( 'products' )->get ();
    return view ( 'welcome', compact ( 'categories' ) );
@@ -66,4 +68,5 @@ Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admi
    Route::post ( '/products/stock/{product}', 'StockController@update' )->name ( 'stock_update' );
 
 } );
+
 

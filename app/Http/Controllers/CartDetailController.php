@@ -9,21 +9,35 @@ use Illuminate\Http\Request;
 
 class CartDetailController extends Controller
 {
+
    public function store ( Request $request )
    {
+      if ( $request->product_stock == 0 ) {
+         return back ()->with ( 'status', 'No quedan unidades en stock' );
+      }
+      $breakStock = false;
+      $unidadesPedido = $request->quantity;
+      $unidadesPosibles = $request->product_stock - $request->quantity;
+      if ($unidadesPosibles < 0){
+         $unidadesPedido = $request->product_stock;
+         $breakStock = true;
+      }
+
       $cartDetail = new CartDetail();
 //      user->carts es un accesor que crea un nuevo carrito si no existe y lo devuelve
       $cartDetail->cart_id = auth ()->user ()->cart->id;
       $cartDetail->product_id = $request->product_id;
-      $cartDetail->quantity = $request->quantity;
+      $cartDetail->quantity = $unidadesPedido;
       $cartDetail->price = $request->price;
       $cartDetail->subtotal = $request->price * $request->quantity;
 
       $cartDetail->save ();
 
-      ProductWasAddedToCart::dispatch ( $request->product_id, $request->quantity );
+      ProductWasAddedToCart::dispatch ( $request->product_id, $unidadesPedido );
 
-      return back ()->with ( 'status', 'Producto añadido al carrito' );
+      return $breakStock
+         ? back ()->with ( 'status', 'Stock insuficiente. Se han añadido al carrito ' . $unidadesPedido . ' unidades')
+         : back ()->with ( 'status', 'Producto añadido al carrito' );
    }
 
    /*
