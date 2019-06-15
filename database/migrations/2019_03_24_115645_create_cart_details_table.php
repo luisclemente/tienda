@@ -17,16 +17,16 @@ class CreateCartDetailsTable extends Migration
          $table->bigIncrements ( 'id' );
 
          $table->unsignedBigInteger ( 'cart_id' );
-         $table->foreign ( 'cart_id' )->references ( 'id' )->on ( 'carts' );
+         $table->foreign ( 'cart_id' )->references ( 'id' )->on ( 'carts' )
+         ->onDelete('cascade');
 
          $table->unsignedBigInteger ( 'product_id' );
          $table->foreign ( 'product_id' )->references ( 'id' )->on ( 'products' );
 
          $table->integer ('quantity');
          $table->integer ('discount')->default(0); // % int
-         $table->float ('price')->nullable(); // % int
-         $table->float ('subtotal')->nullable(); // % int
-       //  $table->float ('active_cart_price')->nullable(); // % int
+         $table->float ('price')->nullable();
+         $table->float ('subtotal')->nullable();
 
          $table->timestamps ();
       } );

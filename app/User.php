@@ -67,6 +67,11 @@ class User extends Authenticatable
       return $this->hasMany ( Cart::class );
    }
 
+   public function orders ()
+   {
+      return $this->hasMany ( Order::class );
+   }
+
    public function getCartAttribute ()
    {
       $cart = $this->carts ()->where ( 'status', 'active' )->first ();
@@ -80,10 +85,34 @@ class User extends Authenticatable
 
       return $cart;
    }
+
    public function getCartPendingAttribute ()
    {
-      $carts = $this->carts ()->where ( 'status', 'pending' )->get();
+      $carts = $this->carts ()->where ( 'status', 'pending' )->get ();
       if ( $carts )
          return $carts;
+   }
+
+
+   public function getNumberOrdersAttribute ()
+   {
+      $carts = $this->carts ()->where ( 'order_date', '!=', null )->get ();
+
+      return count ( $carts );
+   }
+
+   public function getTotalAmountAttribute ()
+   {
+      $total = 0;
+      $carts = $this->carts ()->where ( 'order_date', '!=', null )->get ();
+
+      foreach ( $carts as $cart )
+      {
+         foreach ( $cart->details as $detail )
+         {
+            $total += $detail->subtotal;
+         }
+      }
+      return $total;
    }
 }

@@ -2,6 +2,9 @@
 @section('title', 'Tienda Luis | Dashboard')
 @section('body-class', 'profile-page sidebar-collapse')
 @section('content')
+
+    <!-------        VISTA DASHBOARD/PEDIDOS REALIZADOS  |   MUESTRA LOS CARRITOS PENDIENTES               ----------->
+
     <div class="page-header header-filter" data-parallax="true"
          style="background-image: url('{{ asset ('img/profile_city.jpg') }}')">
     </div>
@@ -14,33 +17,39 @@
                         {{ session('status') }}
                     </div>
                 @endif
+
                 <ul class="nav nav-pills nav-pills-icons" role="tablist">
-                    <!--
-                        color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
-                    -->
+
+                    <!-------   BUTTON 'CARRITO DE COMPRAS'   ----------->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route ('home') }}">
                             <i class="material-icons">dashboard</i>
                             Carrito de compras
                         </a>
                     </li>
+
+                    <!-------   BUTTON 'PEDIDOS REALIZADOS'   ----------->
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route ('home') }}">
                             <i class="material-icons">list</i>
                             Pedidos realizados
                         </a>
                     </li>
+
                 </ul>
                 <hr>
                 @foreach(auth()->user()->cart_pending as $cart_pending )
-                    @if($cart_pending->details->count() == 1)
-                        <p class="text-success display-4">Carrito pendiente con {{ $cart_pending->details->count() }}
-                            producto</p>
-                    @else
-                        <p class="text-success display-4">Carrito pendiente con {{ $cart_pending->details->count() }}
-                            productos</p>
-                    @endif
 
+                <!-------   CART TEXT-INFO   ----------->
+                    <p class="text-success display-4">
+                        @if($cart_pending->details->count() == 1)
+                            Carrito pendiente con 1 producto
+                        @else
+                            Carrito pendiente con {{ $cart_pending->details->count() }} productos
+                        @endif
+                    </p>
+
+                    <!-------  PENDING-CARTS TABLE   ----------->
                     <table class="table">
                         <thead>
                         <tr>
@@ -58,24 +67,25 @@
                                 <td class="text-center">
                                     <img src="{{ $detail->product->featured_image_url }}" height="50">
                                 </td>
+
+                                <!-------   NOMBRE-ENLACE AL PRODUCTO   ----------->
                                 <td>
-                                    <a href="{{ route ('product_show', $detail->product->id) }}"
+                                    <a href="{{ route ('product_show', $detail->product) }}"
                                        target="_blank">{{ $detail->product->name }}</a>
                                 </td>
+
                                 <td class="text-right">&euro; {{ $detail->price }}</td>
                                 <td class="text-right">{{ $detail->quantity }}</td>
                                 <td class="text-right">&euro;{{ $detail->subtotal}}</td>
                                 <td class="td-actions text-right">
-                                    <form method="post" class=""
-                                          action="{{ route ('cart_destroy', $detail->id ) }}">
-                                        @csrf
-                                        @method('delete')
-                                        <a href="{{ route ('product_show', $detail->product->id) }}"
-                                           target="_blank" rel="tooltip" class="btn btn-info btn-sm"
-                                           title="Ver producto">
-                                            <i class="fa fa-info"></i>
-                                        </a>
-                                    </form>
+
+                                    <!-------   BUTTON INFO  ----------->
+                                    <a href="{{ route ('product_show', $detail->product->id) }}"
+                                       target="_blank" rel="tooltip" class="btn btn-info btn-sm"
+                                       title="Ver producto">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+
                                 </td>
                             </tr>
                         @endforeach

@@ -2,12 +2,39 @@
 
 namespace App;
 
+use App\Events\ProductWasAddedToCart;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 class CartDetail extends Model
 {
-   protected $fillable = [ 'product_id', 'quantity' ];
+   protected $fillable = [ 'cart_id', 'product_id', 'quantity', 'price', 'subtotal' ];
+
+   public static function boot ()
+   {
+      parent::boot ();
+      static::saving ( function ( Cartdetail $cartDetail ) {
+         if ( ! \App::runningInConsole () )
+         {
+            $cartDetail->subtotal = $cartDetail->price * $cartDetail->quantity;
+         }
+      } );
+
+      static::updated ( function ( Cartdetail $cartDetail ) {
+         if ( ! \App::runningInConsole () )
+         {
+
+         }
+      } );
+
+      static::deleted ( function ( Cartdetail $cartDetail ) {
+         if ( ! \App::runningInConsole () )
+         {
+            $cartDetail->product->stock += $cartDetail->quantity;
+            $cartDetail->product->save ();
+         }
+      } );
+   }
 
    public function product ()
    {
@@ -28,28 +55,6 @@ class CartDetail extends Model
    {
       if ( $this->quantity > 0 )
          return $this->update ( [ 'quantity' => $this->quantity - 1 ] );
-   }
-
-   public function price ()
-   {
-    //  $lastWeek = date ( "Y-m-d H:i:s", strtotime ( '-7 days' ) );
-      $lastWeek =  Carbon::now ()->subDays (7);
-
-      if ( $this->product->price > $this->price ) {
-         if ( $this->created_at > $lastWeek )
-            return $this->price;
-
-         $this->price = $this->product->price;
-         $this->save ();
-         return $this->price;
-
-      }
-      if ( $this->product->price <= $this->price ) {
-         $this->price = $this->product->price;
-         $this->save ();
-
-         return $this->price;
-      }
    }
 
 }

@@ -1,10 +1,11 @@
 @extends('layouts.app')
-
 @section('title', 'Resultado de la búsqueda')
-
 @section('body-class', 'profile-page sidebar-collapse')
-
 @section('content')
+
+
+    <!----------------  VISTA QUE MUESTRA EL BUSCADOR CUANDO ENCUENTRA CERO O MÁS DE UN PRODUCTO  ----------------->
+
     <div class="page-header header-filter" data-parallax="true"
          style="background-image: url('{{ asset('img/city-profile.jpg') }}');"></div>
     <div class="main main-raised">
@@ -26,37 +27,51 @@
                         @endif
                     </div>
                 </div>
+
+                <!---------    TEXTO INFO DE LA BÚSQUEDA    ----------------->
                 <div class="name text-center">
                     <h3 class="title">Resultados de la búsqueda</h3>
                 </div>
                 <div class="description text-center">
                     <p>Se encontraron {{ $products->count() }} Resultados para el término {{ $query }}</p>
                 </div>
+
+                <!---------   LISTADO DE PRODUCTOS ENCONTRADOS   ----------------->
                 <div class="team text-center">
                     <div class="row">
                         @foreach($products as $product)
                             <div class="col-md-4">
                                 <div class="team-player">
                                     <div class="card card-plain">
+
+                                        <!---------   IMAGEN   ----------->
                                         <div class="col-md-6 ml-auto mr-auto">
                                             <img src="{{ $product->featured_image_url  }}"
                                                  alt="Thumbnail Image"
-                                                 class="img-raised rounded-circle img-fluid">
+                                                 class="img-raised rounded-circle img-fluid"
+                                            >
                                         </div>
+
+                                        <!---------   NOMBRE-ENLACE   --------->
                                         <h4 class="card-title">
-                                            <a href="{{ url('/products/' . $product->id) }}">{{ $product->name }}</a>
+                                            <a href="{{ url('/products/' . $product->id) }}">
+                                                {{ $product->name }}
+                                            </a>
                                             <br>
                                         </h4>
+
+                                        <!---------   DESCRIPCIÓN   ------------->
                                         <div class="card-body">
                                             <p class="card-description">{{ $product->description }}</p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                     <div class="row justify-content-center">
-                        {{--{{ $products->links() }}--}}
+                        {{ $products->links() }}
                     </div>
                 </div>
             </div>

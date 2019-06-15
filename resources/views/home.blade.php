@@ -1,7 +1,11 @@
 @extends('layouts.app')
 @section('title', 'Tienda Luis | Dashboard')
 @section('body-class', 'profile-page sidebar-collapse')
+
 @section('content')
+
+    <!---------------------                  DASHBOARD  |  CART                           ----------------->
+
     <div class="page-header header-filter" data-parallax="true"
          style="background-image: url('{{ asset ('img/profile_city.jpg') }}')">
     </div>
@@ -9,34 +13,54 @@
         <div class="container">
             <div class="section text-center">
                 <h2 class="title">{{ __('Dashboard') }}</h2>
+
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
                 @endif
+
+                @if (session('error'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('error')[1] }}
+                    </div>
+                @endif
+
+                @if (session('message'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('message')[1] }}
+                    </div>
+                @endif
+
                 <ul class="nav nav-pills nav-pills-icons" role="tablist">
-                    <!--
-                        color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
-                    -->
+
+                    <!---------   BOTÓN 'CARRITO DE COMPRAS'   --------->
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ route ('home') }}">
                             <i class="material-icons">dashboard</i>
                             Carrito de compras
                         </a>
                     </li>
+
+                    <!---------   BOTÓN 'PEDIDOS REALIZADOS'   --------->
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route ('ordered_carts') }}">
                             <i class="material-icons">list</i>
                             Pedidos realizados
                         </a>
                     </li>
+
                 </ul>
+
                 <hr>
+                <!---------   TEXT-INFO NÚMERO DE PRODUCTOS   ----------->
                 @if(auth()->user ()->cart->details->count() == 1)
                     <p>Tu carrito de compras presenta {{ auth()->user ()->cart->details->count() }} producto</p>
                 @else
                     <p>Tu carrito de compras presenta {{ auth()->user ()->cart->details->count() }} productos</p>
                 @endif
+
+            <!---------   TABLA-CRUD LISTADO DE DETALLES DEL CARRITO   ----------->
                 <table class="table">
                     <thead>
                     <tr>
@@ -53,18 +77,27 @@
                     <tbody>
                     @foreach(auth()->user()->cart->details as $detail )
                         <tr>
+
+                            <!---------   IMAGEN   ---------->
                             <td class="text-center">
                                 <img src="{{ $detail->product->featured_image_url }}" height="50">
                             </td>
+
+                            <!---------   NOMBRE-ENLACE   ---------->
                             <td>
                                 <a href="{{ route ('product_show', $detail->product->id) }}"
-                                   target="_blank">{{ $detail->product->name }}</a>
+                                   target="_blank">{{ $detail->product->name }}
+                                </a>
                             </td>
-                            <td class="text-right">&euro; {{ $detail->price() }}</td>
+
+                            <!---------   PRECIO, CANTIDAD, SUBTOTAL   ---------->
+                            <td class="text-right">&euro;{{ $detail->price }}</td>
                             <td class="text-right">{{ $detail->quantity }}</td>
-                            <td class="text-right">&euro;{{ $detail->quantity * $detail->price }}</td>
+                            <td class="text-right">&euro;{{ $detail->subtotal }}</td>
+
+                            <!---------   BOTÓN DOBLE 'MODIFICAR'   ---------->
                             <td class="td-actions text-right">
-                                <form action="{{ route ('cartDetail_update', $detail) }}" method="post"
+                                <form action="{{ route ('cartDetail_update', $detail->id) }}" method="post"
                                       class="">
                                     @csrf
                                     <div class="btn-group-vertical">
@@ -79,40 +112,68 @@
                                     </div>
                                 </form>
                             </td>
+
+                            <!---------   BOTÓN 'MODIFICAR CON MODAL'   ---------->
                             <td>
-                                <button class="btn btn-primary btn-sm" data-toggle="modal"
-                                        id="modificar" data-target="#modalAddtoCart"
+                                <button class="btn btn-primary btn-sm"
+                                        id="modificar"
+                                        data-toggle="modal"
+                                        data-target="#modalAddtoCart"
+                                        data-
                                         data-productid="{{ $detail->product->id }}"
                                         data-detailid="{{ $detail->id }}"
-                                        data-quantity="{{ $detail->quantity }}"
-                                >
-                                    <i class="material-icons">add</i> Modificar
+                                        data-stock="{{ $detail->product->stock }}"
+                                        data-quantity="{{ $detail->quantity }}">
+                                    <i class="material-icons">add</i>
+                                    Modificar
                                 </button>
                             </td>
+
+                            <!---------   FORM  |  BORRAR DETALLE  ---------->
                             <td class="td-actions text-right">
                                 <form method="post" class=""
-                                      action="{{ route ('cart_destroy', $detail->id ) }}">
+                                      action="{{ route ('cartDetail_destroy', $detail ) }}">
                                     @csrf
                                     @method('delete')
-                                    <a href="{{ route ('product_show', $detail->product->id) }}"
+
+                                    <!---------   BOTÓN INFO   ---------->
+                                    <a href="{{ route ('product_show', $detail->product) }}"
                                        target="_blank" rel="tooltip" class="btn btn-info btn-sm" title="Ver producto">
                                         <i class="fa fa-info"></i>
                                     </a>
+
+                                        <!---------   BOTÓN ELIMINAR   ---------->
                                     <button type="submit" rel="tooltip" class="btn btn-danger btn-sm" title="Eliminar">
                                         <i class="material-icons">delete_forever</i>
                                     </button>
+
                                 </form>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
+
+                <div class="text-center">
+                    <p>
+                        <strong>Importe a pagar:</strong> {{ auth()->user()->cart->total }}€
+                    </p>
+                </div>
+
+                <!---------   'REALIZAR PEDIDO'   ---------->
                 <form action="{{ route ('place_order') }}" method="post">
                     @csrf
                     <button class="btn btn-primary btn-round">
-                        <i class="material-icons">done</i>Realizar pedido
+                        <i class="material-icons">done</i>
+                        Realizar pedido
                     </button>
                 </form>
+
+                <!--------   'PAGAR CON PAYPAL'   -------->
+                <a href="{{route ('payment')}}" class="btn btn-warning btn-round">
+                    Pagar con <i class="fa fa-cc-paypal"></i>
+                </a>
+
             </div>
         </div>
     </div>
@@ -133,7 +194,8 @@
                     <div class="modal-body">
                         <input type="hidden" name="product_id" value="">
                         <input type="hidden" name="detail_id" value="">
-                        <input type="number" name="quantity" value="" class="form-control">
+                        <input type="hidden" name="product_stock" value="">
+                        <input type="number" name="quantity" class="form-control" min="0" value="">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -151,10 +213,12 @@
 
             var product_id = $(this).attr('data-productid');
             var detail_id = $(this).attr('data-detailid');
+            var stock = $(this).attr('data-stock');
             var quantity = $(this).attr('data-quantity');
 
             $('#modalAddtoCart input[name=product_id]').val(product_id);
             $('#modalAddtoCart input[name=detail_id]').val(detail_id);
+            $('#modalAddtoCart input[name=product_stock]').val(stock);
             $('#modalAddtoCart input[name=quantity]').val(quantity);
 
             //$('#modalAddtoCart').showModal();
@@ -162,6 +226,7 @@
         });
     </script>
 
+
+
+
 @endsection
-
-

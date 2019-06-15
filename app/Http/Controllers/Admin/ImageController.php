@@ -54,11 +54,10 @@ class ImageController extends Controller
 
    public function featured ( $product, ProductImage $productImage )
    {
-      // Quitamos el destacado a la imagen que lo tuviera
       ProductImage::where ( 'product_id', $product )->update ( [
          'featured' => false
       ] );
-      // Destacamos una imagen del producto
+
       $productImage->featured = true;
       $productImage->save ();
 

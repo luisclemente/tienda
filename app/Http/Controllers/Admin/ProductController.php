@@ -6,7 +6,6 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Product;
-use Illuminate\Support\Facades\Input;
 
 class ProductController extends Controller
 {
@@ -24,7 +23,10 @@ class ProductController extends Controller
 
    public function store ( ProductRequest $request )
    {
-      Product::create ( Input::all () ); // Input::all() = $request->all ()
+      if ( is_null ( $request->stock ) )
+         $request->merge ( [ 'stock' => 0 ] );
+
+      Product::create ( $request->all () );
       return redirect ()->route ( 'admin_products_index' );
    }
 
@@ -36,8 +38,8 @@ class ProductController extends Controller
 
    public function update ( ProductRequest $request, Product $product )
    {
-      $product->update ( $request->all () );
-      return redirect ( Input::get ( 'paginate_product_page' ) ); // Retorna la página del producto actualizado
+      $product->priceVariation ( $request, $product )->update ( $request->all () );
+      return redirect ( $request->previous_url );
    }
 
    /**

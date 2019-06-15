@@ -1,8 +1,9 @@
 @extends('layouts.app')
-
 @section('title', $product->name)
-
 @section('body-class', 'profile-page sidebar-collapse')
+
+
+<!------------------------  VISTA DE UN PRODUCTO CON BOTÓN PARA AÑADIRLO AL CART  ----------------------------------->
 
 @section('content')
     <div class="page-header header-filter" data-parallax="true"
@@ -10,6 +11,8 @@
     <div class="main main-raised">
         <div class="profile-content">
             <div class="container">
+
+                <!---------  IMAGEN DEL PRODUCTO ----------->
                 <div class="row">
                     <div class="col-md-6 ml-auto mr-auto text-center">
                         <div class="profile">
@@ -25,39 +28,51 @@
                         @endif
                     </div>
                 </div>
+
+                <!---------  INFO: NOMBRE, CATEGORÍA Y DESCRIPCIÓN DEL PRODUCTO  ----------->
                 <div class="name text-center">
                     <h3 class="title">{{ $product->name }}</h3>
                     <h6>{{ $product->category->name }}</h6>
-                </div>
-                <div class="description text-center">
-                    <p>{{ $product->long_description }}</p>
-                </div>
-                @foreach(auth()->user()->cart->details as $detail )
-                    @if ($detail->product_id == $product->id)
-                        {{ $contador++ }}
-                    @endif
-                @endforeach
-                @if($contador == 0)
-                    <div class="text-center">
-                        @if($product->stock == 0)
-                            <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddtoCart">
-                                <i class="material-icons"></i> No quedan unidades
-                            </button>
-                        @else
-                            <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalAddtoCart">
-                                <i class="material-icons">add</i> Añadir al carrito de compras
-                            </button>
-                        @endif
-
+                    <div class="description text-center">
+                        <p>{{ $product->long_description }}</p>
                     </div>
+                </div>
+
+                <!--------- LÓGICA DEL BOTÓN: AÑADIR AL CARRITO // IR AL CARRITO  // NO QUEDAN UNIDADES ----------->
+                @auth
+                    @if( ! $productInCart )
+                        <div class="text-center">
+                            @if($product->stock == 0)
+                                <button class="btn btn-primary btn-round">
+                                    <i class="material-icons"></i>
+                                    No quedan unidades
+                                </button>
+                            @else
+                                <button class="btn btn-primary btn-round" data-toggle="modal"
+                                        data-target="#modalAddtoCart">
+                                    <i class="material-icons">add</i>
+                                    Añadir al carrito de compras
+                                </button>
+                            @endif
+                        </div>
+                    @else
+                        <div class="text-center">
+                            <a class="btn btn-primary btn-round" href="{{ route ('home') }}">
+                                <i class="material-icons">add</i>
+                                Este producto ya está en tu carrito. Pulsa para modificar la cantidad
+                            </a>
+                        </div>
+                    @endif
                 @else
                     <div class="text-center">
-                        <a class="btn btn-primary btn-round" href="{{ route ('home') }}">
-                            <i class="material-icons">add</i> Este producto ya está en tu carrito. Pulsa para
-                            modificar la cantidad
+                        <a class="btn btn-primary btn-round" href="{{ route ('login') }}">
+                            <i class="material-icons">add</i>
+                            Añadir al carrito de compras
                         </a>
                     </div>
-                @endif
+                @endauth
+
+            <!--------- IMAǴENES DEL PRODUCTO ----------->
                 <div class="text-center gallery">
                     <div class="row">
                         <div class="col-md-3 ml-auto">
@@ -72,9 +87,11 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
     <!-- Modal -->
     <div class="modal fade" id="modalAddtoCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
@@ -90,11 +107,15 @@
                 </div>
                 <form action="{{ route ('cartDetail_store') }}" method="post">
                     @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="hidden" name="price" value="{{ $product->price }}">
+                    <input type="hidden" name="product_stock" value="{{ $product->stock }}">
+                    @auth
+                        <input type="hidden" name="cart_id" value="{{ auth ()->user ()->cart->id }}">
+                    @endauth
+
                     <div class="modal-body">
                         <input type="number" name="quantity" value="1" class="form-control">
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <input type="hidden" name="price" value="{{ $product->price }}">
-                        <input type="hidden" name="product_stock" value="{{ $product->stock }}">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

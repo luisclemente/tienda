@@ -2,11 +2,14 @@
 
 namespace App\Providers;
 
-use App\Events\ProductWasAddedToCart;
-use App\Listeners\UpdateProductStock;
-use Illuminate\Support\Facades\Event;
+use App\Events\ProductPriceWasChangedEvent;
+use App\Events\ProductInCartEvent;
+use App\Listeners\DetailPriceVariationListener;
+use App\Listeners\SendMailToNewUserRegisteredListener;
+use App\Listeners\UpdateProductStockListener;
+use App\Listeners\StoreLastLoginDateListener;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -17,9 +20,19 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        ProductWasAddedToCart::class => [
-            UpdateProductStock::class,
+       ProductInCartEvent::class          => [
+          UpdateProductStockListener::class,
         ],
+       Registered::class                  => [
+          SendMailToNewUserRegisteredListener::class,
+       ],
+       Login::class                       => [
+          StoreLastLoginDateListener::class
+       ],
+       ProductPriceWasChangedEvent::class => [
+          DetailPriceVariationListener::class
+       ]
+
     ];
 
     /**

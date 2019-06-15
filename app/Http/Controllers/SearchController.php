@@ -11,6 +11,7 @@ class SearchController extends Controller
    {
       $query = $request->input ( 'query' );
       $products = Product::where ( 'name', 'like', "%$query%" )->paginate ( 9 );
+
       if ($products->count() == 1){
          $id = $products->first()->id;
          return redirect ("/products/$id");

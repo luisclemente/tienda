@@ -14,16 +14,17 @@ class CategoriesTableSeeder extends Seeder
     */
    public function run ()
    {
-      $categories = factory ( Category::class, 5 )
-         ->create ()
+      factory ( Category::class, 1 )->create ( [ 'name' => 'General' ] );
+
+      factory ( Category::class, 5 )->create ()
          ->each ( function ( $category ) {
             $products = factory ( Product::class, 20 )->make ();
-            $category->products ()->saveMany ($products);
+            $category->products ()->saveMany ( $products );
 
-            $products->each (function ($p){
-               $images = factory ( ProductImage::class, 5)->make();
-               $p->images()->saveMany ($images);
-            });
+            $products->each ( function ( $p ) {
+               $images = factory ( ProductImage::class, 5 )->make ();
+               $p->images ()->saveMany ( $images );
+            } );
          } );
    }
 }

@@ -2,15 +2,29 @@
 
 namespace App;
 
+use App\Events\ProductPriceWasChangedEvent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
    use Sortable;
-   public $sortable = [ 'name', 'description', 'price', 'category_id', 'stock' ];
+   public $sortable = [ 'id', 'name', 'description', 'price', 'category_id', 'stock' ];
 
    protected $fillable = [ 'name', 'description', 'price', 'long_description', 'category_id', 'stock' ];
+
+   public static function boot ()
+   {
+      parent::boot ();
+
+      static::updated ( function ( Product $product ) {
+         if ( ! \App::runningInConsole () )
+         {
+            ProductPriceWasChangedEvent::dispatch ( $product );
+         }
+      } );
+   }
 
    public function category ()
    {
@@ -20,6 +34,16 @@ class Product extends Model
    public function images ()
    {
       return $this->hasMany ( ProductImage::class );
+   }
+
+   public function cart_details ()
+   {
+      return $this->hasMany ( CartDetail::class );
+   }
+
+   public function order_items ()
+   {
+      return $this->hasMany ( OrderItem::class );
    }
 
    /*
@@ -41,5 +65,44 @@ class Product extends Model
          return $this->category->name;
 
       return 'General';
+   }
+
+   public function priceVariation ( $request, Product $product )
+   {
+      if ( $request->price > $product->price )
+      {
+         $product->price_changed = Carbon::now (); // Guardamos en bd la fecha en que el producto subió de precio
+         $product->previous_price = $product->price;
+         $product->save ();
+      }
+
+      return $product;
+   }
+
+   public function productIsAlreadyInCart ()
+   {
+      $productInCart = false;
+
+      if ( auth ()->check () )
+      {
+         foreach ( auth ()->user ()->cart->details as $detail )
+         {
+            if ( $detail->product_id == $this->id )
+               return $productInCart = true;
+         }
+      }
+
+      return $productInCart;
+   }
+
+   public static function availableUnits ( $request, $quantity = null )
+   {
+      $quantity = $quantity ?: $request->quantity;
+      $stockTotal = $request->product_stock - $quantity;
+
+      if ( $stockTotal < 0 )
+         $quantity = $request->product_stock;
+
+      return $quantity;
    }
 }
