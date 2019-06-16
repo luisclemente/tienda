@@ -24,6 +24,8 @@ Route::get ( '/products/json', 'SearchController@data' );
 
 Route::get ( '/ordered_carts', 'CartController@ordered_carts' )->name ( 'ordered_carts' );
 
+Route::get ( '/show/{cart}', 'CartController@show' )->name ( 'cart_show' );
+
 Route::get ( '/products/{product}', 'ProductController@show' )->name ('product_show');
 
 Route::get ( '/categories/{category}', 'CategoryController@show' )->name ('category_show');
@@ -68,9 +70,10 @@ Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admi
    Route::post ( '/users/{user}', 'UserController@update' )->name ( 'user_update' );
    Route::delete ( '/users/{user}', 'UserController@destroy' )->name ( 'user_destroy' );
 
-   Route::get ( '/users/ordereds/{user}', 'UserController@showcarts' )->name ('ordered_user_carts'); // listado
+   Route::get ( '/users/ordereds/{user}', 'UserController@showcarts' )->name ('ordered_user_carts');
 
-   Route::get ( '/clients', 'ClientesController@index' )->name ('admin_clients_index'); // listado
+   Route::get ( '/clients', 'ClientesController@index' )->name ('admin_clients_index');
+   Route::get ( '/clients/ordereds/{user}', 'ClientesController@showcarts' )->name ('ordered_client_carts');
 
 
 } );

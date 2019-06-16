@@ -37,7 +37,7 @@
                                     <td class="text-right">{{ $user->address }}</td>--}}
                                     <td>
                                         <!-------    DETALLES PEDIDOS  ----------->
-                                        <a href="{{ route ('ordered_user_carts', $user ) }}"
+                                        <a href="{{ route ('ordered_client_carts', $user ) }}"
                                            rel="tooltip" class="btn btn-success btn-sm" title="Editar producto">
                                             <i class="material-icons">Mostrar pedidos</i>
                                         </a>

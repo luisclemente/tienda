@@ -9,7 +9,17 @@ class ClientesController extends Controller
 {
    public function index ()
    {
-      $users = User::Has('carts')->get();
-      return view ( 'admin.clients.index', compact ( 'carts', 'users' ) );
+
+      //  $users = User::Has ( 'carts' )->get ();
+      $users = User::whereHas ( 'carts', function ( $q ) {
+         $q->where ( 'order_date', '!=', null );
+      } )->get ();
+      // dd ( $users );
+      return view ( 'admin.clients.index', compact ( 'users' ) );
+   }
+
+   public function showcarts (User $user)
+   {
+      return view('admin.clients.ordered_carts', compact ('user'));
    }
 }

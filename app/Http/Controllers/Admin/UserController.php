@@ -85,8 +85,5 @@ class UserController extends Controller
       $user->delete();
    }
 
-   public function showcarts (User $user)
-   {
-       return view('admin.users.ordered_carts', compact ('user'));
-   }
+
 }
