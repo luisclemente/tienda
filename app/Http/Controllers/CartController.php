@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
-use App\Mail\NewOrder;
+use App\User;
 use Carbon\Carbon;
 
 class CartController extends Controller
 {
-
    public function update ()
    {
-      $user = auth ()->user ();
+      $user = User::find ( auth ()->id () );
       $cart = $user->cart;
       $cart->status = 'pending';
       $cart->order_date = Carbon::now ();
       $cart->save ();
-
-     // \Mail::to ( $user )->send ( new NewOrder( $user, $cart ) );
 
       return back ()->with ( 'status', 'Tu pedido ha sido registrado. Te contactaremos pronto vía email' );
    }
@@ -27,8 +24,8 @@ class CartController extends Controller
       return view ( 'carts.ordered_carts' );
    }
 
-   public function show (Cart $cart)
+   public function show ( Cart $cart )
    {
-      return view ( 'admin.clients.cart_details', compact('cart') );
+      return view ( 'admin.clients.cart_details', compact ( 'cart' ) );
    }
 }

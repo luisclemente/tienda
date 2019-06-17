@@ -2,10 +2,30 @@
 
 namespace App;
 
+use App\Events\CartWasOrderedEvent;
+use App\Events\ProductUnderMinimumStockEvent;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
+
+   public static function boot ()
+   {
+      parent::boot ();
+
+      static::updated ( function ( Cart $cart ) {
+         if ( ! \App::runningInConsole () )
+         {
+            $products_minimum_stock = $cart->products_under_minimum_stock;
+
+            if ( $products_minimum_stock )
+               ProductUnderMinimumStockEvent::dispatch ( $products_minimum_stock );
+
+            CartWasOrderedEvent::dispatch ( auth ()->user (), $cart );
+         }
+      } );
+   }
+
    public function details ()
    {
       return $this->hasMany ( CartDetail::class );
@@ -31,22 +51,23 @@ class Cart extends Model
       return $this->user->name;
    }
 
-   /*
-    * Evento para descontar unidades al stock cuando el usuario realiza el pedido
-    */
-   /* protected static function boot ()
-    {
-       parent::boot ();
-       static::updated ( function ( Cart $cart ) {
+   public function iva ( $type )
+   {
+      return round ( $this->total * $type, 2 );
+   }
 
-          if ( ! \App::runningInConsole () ) {
-             foreach ( $cart->details as $detail ) {
-                $product = Product::find ( $detail->product->id );
-                $product->stock = $product->stock - $detail->quantity;
-                $product->save ();
-             }
-          }
+   public function getProductsUnderMinimumStockAttribute ()
+   {
+      $products_minimum_stock = [];
 
-       } );
-    }*/
+      foreach ( $this->details as $detail )
+      {
+         if ( $detail->product->stock < $detail->product->minimum_stock )
+         {
+            array_push ( $products_minimum_stock, $detail->product );
+         }
+      }
+
+      return $products_minimum_stock;
+   }
 }

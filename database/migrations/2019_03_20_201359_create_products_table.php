@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
          $table->text ( 'long_description' )->nullable();
          $table->float ( 'price' );
          $table->integer ( 'stock' );
+         $table->integer ( 'minimum_stock' )->nullable();
          $table->timestamp ('price_changed')->nullable();
          $table->float('previous_price')->nullable();
 
