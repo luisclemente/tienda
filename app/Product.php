@@ -46,6 +46,11 @@ class Product extends Model
       return $this->hasMany ( OrderItem::class );
    }
 
+   public function providers ()
+   {
+       return $this->belongsToMany (Provider::class)->withPivot ('price', 'discount');
+   }
+
    /*
     * Accesor para solucionar el problema en la vista home de productos que no tengan imágenes asociadas.
     */

@@ -93,6 +93,11 @@
                                     <a class="dropdown-item" href="{{ route('admin_clients_index') }}">
                                         Gestionar clientes
                                     </a>
+
+                                    <!--------  'GESTIONAR COMPRAS'  ------------>
+                                    <a class="dropdown-item" href="{{ route('admin_providers_index') }}">
+                                        Gestionar compras
+                                    </a>
                             @endif
 
                         <!--------  LOGOUT  ------------>

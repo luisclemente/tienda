@@ -40,11 +40,11 @@ Route::post ( '/order', 'CartController@update' )->name ('place_order');
 
 Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admin' )->group ( function () {
    Route::get ( '/products', 'ProductController@index' )->name ('admin_products_index');
- //  Route::get ( '/sort/{column}', 'ProductController@sort' )->name ('admin_products_sort');
    Route::get ( '/products/create', 'ProductController@create' )->name ( 'product_create' );
    Route::post ( '/products', 'ProductController@store' )->name ( 'product_store' );
    Route::get ( '/products/{product}', 'ProductController@edit' )->name ( 'product_edit' );
    Route::post ( '/products/{product}', 'ProductController@update' )->name ( 'product_update' );
+   Route::put ( '/providers/products', 'ProductController@purchase' )->name ( 'product_purchase' );
    Route::delete ( '/products/{product}', 'ProductController@destroy' )->name ( 'product_destroy' );
 
    Route::get ( '/products/images/{product}', 'ImageController@index' )->name ('product_images_index'); // listado y formulario creación
@@ -74,6 +74,9 @@ Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admi
 
    Route::get ( '/clients', 'ClientesController@index' )->name ('admin_clients_index');
    Route::get ( '/clients/ordereds/{user}', 'ClientesController@showcarts' )->name ('ordered_client_carts');
+
+   Route::get ( '/providers', 'ProviderController@index' )->name ('admin_providers_index');
+
 
 
 } );

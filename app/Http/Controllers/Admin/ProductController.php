@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -38,8 +39,16 @@ class ProductController extends Controller
 
    public function update ( ProductRequest $request, Product $product )
    {
+      dd ( $request );
       $product->priceVariation ( $request, $product )->update ( $request->all () );
       return redirect ( $request->previous_url );
+   }
+
+   public function purchase ( Request $request )
+   {
+      $product = Product::find ( $request->productid );
+      $product->update ( [ 'stock' => $product->stock + $request->quantity ] );
+      return back ();
    }
 
    /**

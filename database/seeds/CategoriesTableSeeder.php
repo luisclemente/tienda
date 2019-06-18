@@ -16,10 +16,13 @@ class CategoriesTableSeeder extends Seeder
             $products = factory ( Product::class, 20 )->make ();
             $category->products ()->saveMany ( $products );
 
-            $products->each ( function ( $p ) {
+            $products->each ( function ( $product ) {
                $images = factory ( ProductImage::class, 5 )->make ();
-               $p->images ()->saveMany ( $images );
+               $product->images ()->saveMany ( $images );
             } );
          } );
-   }
-}
+
+
+   } // run
+
+} // class

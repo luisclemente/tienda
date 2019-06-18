@@ -15022,7 +15022,10 @@ namespace  {
 
     class App extends \Illuminate\Support\Facades\App {}
 
-    class Arr extends \Illuminate\Support\Arr {}
+   /**
+    * @method static random( array $array )
+    */
+   class Arr extends \Illuminate\Support\Arr {}
 
     class Artisan extends \Illuminate\Support\Facades\Artisan {}
 
