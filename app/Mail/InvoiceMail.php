@@ -8,7 +8,6 @@ use Barryvdh\DomPDF\PDF;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class InvoiceMail extends Mailable
 {
@@ -18,11 +17,6 @@ class InvoiceMail extends Mailable
    private $cart;
    private $pdf;
 
-   /**
-    * Create a new message instance.
-    *
-    * @return void
-    */
    public function __construct ( User $user, Cart $cart, PDF $pdf )
    {
       $this->user = $user;
@@ -33,7 +27,7 @@ class InvoiceMail extends Mailable
    public function build ()
    {
       return $this
-         ->markdown ( 'emails.receipt' )
+         ->markdown ( 'emails.new_order' )
          ->with ( 'user', $this->user )
          ->with ( 'cart', $this->cart )
          ->attachData ( $this->pdf->output (), 'Tu factura.pdf' )

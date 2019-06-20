@@ -68,7 +68,7 @@ Route::middleware ( [ 'auth', 'admin' ] )->prefix ( 'admin' )->namespace ( 'Admi
    Route::post ( '/users', 'UserController@store' )->name ( 'user_store' );
    Route::get ( '/users/{user}', 'UserController@edit' )->name ( 'user_edit' );
    Route::post ( '/users/{user}', 'UserController@update' )->name ( 'user_update' );
-   Route::delete ( '/users/{user}', 'UserController@destroy' )->name ( 'user_destroy' );
+   Route::delete ( '/users', 'UserController@destroy' )->name ( 'user_destroy' );
 
   // Route::get ( '/users/ordereds/{user}', 'UserController@showcarts' )->name ('ordered_user_carts');
 

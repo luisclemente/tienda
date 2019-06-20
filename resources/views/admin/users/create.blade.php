@@ -16,6 +16,7 @@
             <!-------    FORM  |  CREAR NUEVO user    ----------->
                 <form action="{{ route('user_store') }}" method="post">
                     @csrf
+                    <input type="hidden" name="previous_url" value="{{ URL::previous () }}">
                     <div class="row">
 
                         <!-------    NOMBRE    ----------->
@@ -49,7 +50,7 @@
                         <div class="col-sm-9">
                             <div class="form-group label-floating">
                                 <label class="control-label">Address</label>
-                                <input type="text" class="form-control" name="addres"
+                                <input type="text" class="form-control" name="address"
                                        value="{{ old('addres') }}">
                             </div>
                         </div>

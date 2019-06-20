@@ -44,31 +44,45 @@
                                     <td class="td-actions text-right">
 
                                         <!-------  FORM | ELIMINAR USUARIO --->
-                                        <form method="post"
-                                              action="{{ route('user_destroy', $user ) }}">
-                                        @csrf
-                                        @method('delete')
+                                    {{-- <form method="post" action="{{ route('user_destroy', $user ) }}">
+                                     @csrf
+                                     @method('delete')--}}
 
-                                        <!-------    BUTTON MOSTRAR    ----------->
-                                            {{--<a href="{{ route(' user_show', $user) }}"
-                                               rel="tooltip" class="btn btn-info btn-sm" title="Ver producto"
-                                               target="_blank">
-                                                <i class="fa fa-info"></i>
-                                            </a>--}}
+                                    <!-------    BUTTON MOSTRAR    ----------->
+                                    {{--<a href="{{ route(' user_show', $user) }}"
+                                       rel="tooltip" class="btn btn-info btn-sm" title="Ver producto"
+                                       target="_blank">
+                                        <i class="fa fa-info"></i>
+                                    </a>--}}
 
-                                            <!-------    BUTTON | EDITAR  ----------->
-                                            <a href="{{ route ('user_edit', $user ) }}"
-                                               rel="tooltip" class="btn btn-success btn-sm" title="Editar producto">
-                                                <i class="material-icons">edit</i>
-                                            </a>
+                                    <!-------    BUTTON | EDITAR  ----------->
+                                        <a href="{{ route ('user_edit', $user ) }}"
+                                           rel="tooltip" class="btn btn-success btn-sm" title="Editar producto">
+                                            <i class="material-icons">edit</i>
+                                        </a>
 
-                                            <!-------    BUTTON | ELIMINAR   ----------->
-                                            <button type="submit" rel="tooltip" class="btn btn-danger btn-sm"
-                                                    title="Eliminar">
+                                        <!-------    BUTTON | ELIMINAR   ----------->
+
+                                            <button id="modificar"
+                                                    rel="tooltip"
+                                                    class="btn btn-danger btn-sm"
+                                                    title="Eliminar"
+                                                    data-toggle="modal"
+                                                    data-target="#modalAddtoCart"
+                                                    data-user="{{ $user->id }}"
+                                                    data-username="{{ $user->name }}"
+                                                    data-usercarts="{{ $user->carts->count() }}"
+                                            >
                                                 <i class="material-icons">close</i>
                                             </button>
 
-                                        </form>
+
+                                           {{--   <button type="submit" class="btn btn-danger btn-sm">
+                                                  <i class="material-icons">close</i>
+                                              </button>--}}
+
+
+                                        {{--</form>--}}
 
                                     </td>
                                 </tr>
@@ -80,6 +94,52 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAddtoCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="modal-title" id="exampleModalLabel">
+                        Se eliminará el usuario y todos sus carritos
+                    </span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route ('user_destroy') }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-body">
+                        <input type="hidden" name="user_id" value="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Continuar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     @include ('partials.footer')
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).on('click', '#modificar', function () {
+            var user = $(this).attr('data-user');
+            var username = $(this).attr('data-username');
+            var usercarts = $(this).attr('data-usercarts');
+            $('#exampleModalLabel').text('El usuario ' +  username + ' tiene '
+                + usercarts + ' carritos activos o pendientes.' + '\n'
+                + 'Se eliminará el usuario y todos sus carritos');
+            $('#modalAddtoCart input[name=user_id]').val(user);
+        });
+    </script>
+
+
+
+
 @endsection
 

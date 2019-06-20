@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-
    public static function boot ()
    {
       parent::boot ();
