@@ -20,5 +20,13 @@ class UsersTableSeeder extends Seeder
          'admin' => true
       ] );
 
+      User::create ( [
+         'name' => 'espe',
+         'email' => 'espe@email.com',
+         'user_name' => 'espe',
+         'password' => bcrypt ( '.' ),
+         'admin' => false
+      ] );
+
    }
 }
