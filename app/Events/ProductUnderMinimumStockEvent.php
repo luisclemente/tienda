@@ -2,7 +2,6 @@
 
 namespace App\Events;
 
-use App\Cart;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;

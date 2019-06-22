@@ -39,7 +39,6 @@ class ProductController extends Controller
 
    public function update ( ProductRequest $request, Product $product )
    {
-      dd ( $request );
       $product->priceVariation ( $request, $product )->update ( $request->all () );
       return redirect ( $request->previous_url );
    }

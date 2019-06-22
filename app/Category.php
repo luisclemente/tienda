@@ -17,9 +17,12 @@ class Category extends Model
    {
       if ( $this->image )
          return '/images/categories/' . $this->image;
+
       $firstProduct = $this->products ()->first ();
+
       if($firstProduct)
          return $firstProduct->featured_image_url;
+
       return '/images/products/default.png';
    }
 }

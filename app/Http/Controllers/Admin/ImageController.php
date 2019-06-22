@@ -36,16 +36,15 @@ class ImageController extends Controller
 
    public function destroy ( Request $request )
    {
-      // Eliminar el archivo
       $productImage = ProductImage::find ( $request->image_id );
-      // dd($productImage);
+
       if ( substr ( $productImage->image, 0, 4 ) === 'http' ) {
          $deleted = true;
       } else {
          $fullPath = public_path () . '/images/products/' . $productImage->image;
          $deleted = File::delete ( $fullPath );
       }
-      //Eliminar el registro de la img en la bd
+
       if ( $deleted ) {
          $productImage->delete ();
       }

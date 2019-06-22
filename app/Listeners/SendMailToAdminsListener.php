@@ -13,12 +13,7 @@ class SendMailToAdminsListener
       $admins = User::all ()->where ( 'admin', true );
 
       foreach ( $event->products_minimum_stock as $product )
-      {
          foreach ( $admins as $admin )
-         {
             Mail::to ( $admin )->send ( new MinimumStockMail( $product ) );
-         }
-      }
-
    }
 }

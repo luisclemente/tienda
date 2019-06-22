@@ -7,7 +7,6 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-
 class ProductPriceWasChangedEvent
 {
    use Dispatchable, InteractsWithSockets, SerializesModels;

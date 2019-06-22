@@ -48,8 +48,7 @@ class PaypalController extends Controller
       $subtotal = 0;
       $cart = auth ()->user ()->cart;
       $cartDetails = auth ()->user ()->cart->details;
-      //$cart = \Session::get ( 'cart' );
-      //dd($cart);
+
       $currency = 'EUR';
 
       foreach ( $cartDetails as $producto )
@@ -63,7 +62,6 @@ class PaypalController extends Controller
 
          $items[] = $item;
          $subtotal += $producto->quantity * $producto->price;
-         //$subtotal = $producto->subtotal ;
       }
 
       $item_list = new ItemList();
@@ -105,8 +103,10 @@ class PaypalController extends Controller
             exit;
          } else
          {
-            echo '<pre>';print_r(json_decode($ex->getData()));exit;
-           // die( 'Ups! Algo salió mal' );
+            echo '<pre>';
+            print_r ( json_decode ( $ex->getData () ) );
+            exit;
+            // die( 'Ups! Algo salió mal' );
          }
       }
 
@@ -129,13 +129,14 @@ class PaypalController extends Controller
 
       return \Redirect::route ( 'home' )->with ( 'error', 'Ups! Error desconocido.' );
    }
-/*
- * - 1. Get the payment ID before session clear
- * - 2. Clear the session payment ID
- * - 3. PaymentExecution object includes information necessary to execute a PayPal account payment. The payer_id is
- *       added to the request query parameters when the user is redirected from paypal back to your site
- * - 4. Execute the payment.
- */
+
+   /*
+    * - 1. Get the payment ID before session clear
+    * - 2. Clear the session payment ID
+    * - 3. PaymentExecution object includes information necessary to execute a PayPal account payment. The payer_id is
+    *       added to the request query parameters when the user is redirected from paypal back to your site
+    * - 4. Execute the payment.
+    */
    public function getPaymentStatus ()
    {
       $payment_id = \Session::get ( 'paypal_payment_id' ); // 1
@@ -144,9 +145,8 @@ class PaypalController extends Controller
       $token = Input::get ( 'token' );
 
       if ( empty( $payerId ) || empty( $token ) )
-      {
          return \Redirect::route ( 'home' )->with ( 'message', 'Hubo un problema al intentar pagar con Paypal' );
-      }
+
 
       $payment = Payment::get ( $payment_id, $this->_api_context ); // 3
       $execution = new PaymentExecution();
@@ -155,8 +155,8 @@ class PaypalController extends Controller
 
       if ( $result->getState () == 'approved' )
       {
-         $this->saveOrder ( auth ()->user()->cart );
-         auth ()->user()->cart->delete();
+         $this->saveOrder ( auth ()->user ()->cart );
+         auth ()->user ()->cart->delete ();
          return \Redirect::route ( 'home' )->with ( 'status', 'Compra realizada de forma correcta' );
       }
       return \Redirect::route ( 'home' )->with ( 'status', 'La compra fue cancelada' );
@@ -167,20 +167,18 @@ class PaypalController extends Controller
       $subtotal = 0;
 
       foreach ( $cart->details as $detail )
-      {
          $subtotal += $detail->subtotal;
-      }
+
 
       $order = Order::create ( [
          'subtotal' => $subtotal,
          'shipping' => 10,
-         'user_id'  => auth()->id ()
+         'user_id'  => auth ()->id ()
       ] );
 
       foreach ( $cart->details as $detail )
-      {
          $this->saveOrderItem ( $detail, $order->id );
-      }
+
    }
 
    private function saveOrderItem ( $detail, $order_id )

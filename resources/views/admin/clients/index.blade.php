@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Listado de usuarios')
+@section('title', 'Listado de clientes')
 @section('body-class', 'profile-page sidebar-collapse')
 @section('content')
 
@@ -11,7 +11,7 @@
     <div class="main main-raised">
         <div class="container">
             <div class="section text-center">
-                <h2 class="title">Listado de usuarios</h2>
+                <h2 class="title">Listado de clientes</h2>
                 <div class="team">
                     <div class="row justify-content-center">
 
@@ -20,10 +20,10 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th class="text-center">Nombre del cliente</th>
+                                <th class="col-md-2">Nombre del cliente</th>
                                 <th class="col-md-2">Número Pedidos</th>
                                 <th class="col-md-2">Total Pedidos</th>
-                                <th class="col-md-2">Detalle Pedidos</th>
+                                <th class="col-md-2">Detalles Pedidos</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -32,14 +32,12 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->number_orders }}</td>
                                     <td>{{ $user->total_amount }}</td>
-                                   {{-- <td>{{ $user->email }}</td>
-                                    <td>{{ $user->phone}}</td>
-                                    <td class="text-right">{{ $user->address }}</td>--}}
                                     <td>
                                         <!-------    DETALLES PEDIDOS  ----------->
                                         <a href="{{ route ('ordered_client_carts', $user ) }}"
-                                           rel="tooltip" class="btn btn-success btn-sm" title="Editar producto">
-                                            <i class="material-icons">Mostrar pedidos</i>
+                                           rel="tooltip" class="btn btn-success btn-sm" title="Ir a los detalles"
+                                        >
+                                            <i class="material-icons">watch</i>
                                         </a>
 
                                     </td>

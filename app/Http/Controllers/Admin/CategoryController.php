@@ -15,24 +15,11 @@ class CategoryController extends Controller
       return view ( 'admin.categories.index', compact ( 'categories' ) );
    }
 
-   /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
    public function create ()
    {
       return view ( 'admin.categories.create' );
    }
 
-   /**
-    * Store a newly created resource in storage.
-    *
-    * @param  \Illuminate\Http\Request $request
-    * @return \Illuminate\Http\Response
-    *
-    * @throws \Illuminate\Validation\ValidationException
-    */
    public function store ( CategoryRequest $request )
    {
       $category = Category::create ( $request->all () );
@@ -44,10 +31,9 @@ class CategoryController extends Controller
          $fileName = uniqid () . '-' . $file->getClientOriginalName (); // id único + nombre del archivo q sube el usuario
          $moved = $file->move ( $path, $fileName );
 
-         // update category
          if ( $moved ) {
             $category->image = $fileName;
-            $category->save (); // UPDATE
+            $category->save ();
          }
       }
       return redirect ()->route ('admin_categories_index');
@@ -74,7 +60,7 @@ class CategoryController extends Controller
             $previousPath = $path . '/' . $category->image;
 
             $category->image = $fileName;
-            $saved = $category->save (); // UPDATE
+            $saved = $category->save ();
 
             if ( $saved )
                File::delete ( $previousPath );
@@ -83,9 +69,7 @@ class CategoryController extends Controller
       return redirect ( '/admin/categories' );
    }
 
-   /**
-    * @throws \Exception
-    */
+   /** @throws \Exception */
    public function destroy ( Category $category )
    {
       $category->products ()->update ( [ 'category_id' => null ] );

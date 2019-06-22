@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserRequest;
 use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
@@ -15,11 +14,6 @@ class UserController extends Controller
       return view ( 'admin.users.index', compact ( 'users' ) );
    }
 
-   /**
-    * Show the form for creating a new resource.
-    *
-    * @return \Illuminate\Http\Response
-    */
    public function create ()
    {
       return view ( 'admin.users.create' );
@@ -30,13 +24,8 @@ class UserController extends Controller
       $pass = bcrypt ( 'secret' );
       $request->merge ( [ 'password' => $pass ] );
       User::create ( $request->all () );
-//      return back ()->with ( 'message', 'Usuario añadido con éxito' );
-      return redirect ( $request->previous_url )->with ( 'message', 'Usuario añadido con éxito' );
-   }
 
-   public function show ( $id )
-   {
-
+      return redirect ( $request->previous_url )->with ( 'status', 'Usuario añadido con éxito' );
    }
 
    public function edit ( User $user )
@@ -50,6 +39,7 @@ class UserController extends Controller
       return redirect ( $request->previous_url );
    }
 
+   /**@throws \Exception */
    public function destroy ()
    {
       $user = User::find ( \request ( 'user_id' ) );

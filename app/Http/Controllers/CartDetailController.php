@@ -68,12 +68,11 @@ class CartDetailController extends Controller
 
    }
 
+   /** @throws \Exception */
    public function destroy ( CartDetail $detail )
    {
       if ( $detail->cart_id == auth ()->user ()->cart->id )
-      {
          $detail->delete ();
-      }
 
       return back ()->with ( 'status', 'El producto se ha eliminado correctamente' );
    }

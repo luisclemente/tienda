@@ -60,12 +60,8 @@ class Cart extends Model
       $products_minimum_stock = [];
 
       foreach ( $this->details as $detail )
-      {
          if ( $detail->product->stock < $detail->product->minimum_stock )
-         {
             array_push ( $products_minimum_stock, $detail->product );
-         }
-      }
 
       return $products_minimum_stock;
    }

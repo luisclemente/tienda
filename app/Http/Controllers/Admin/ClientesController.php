@@ -9,12 +9,10 @@ class ClientesController extends Controller
 {
    public function index ()
    {
-
-      //  $users = User::Has ( 'carts' )->get ();
       $users = User::whereHas ( 'carts', function ( $q ) {
          $q->where ( 'order_date', '!=', null );
       } )->get ();
-      // dd ( $users );
+
       return view ( 'admin.clients.index', compact ( 'users' ) );
    }
 

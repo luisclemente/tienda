@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Registrar nuevo producto')
+@section('title', 'Registrar nuevo usuario')
 @section('body-class', 'profile-page sidebar-collapse')
 @section('content')
 
@@ -10,8 +10,14 @@
     <div class="main main-raised">
         <div class="container">
             <div class="section text-center">
-                <h2 class="title">Registrar nuevo producto</h2>
-               @include('partials.errors')
+                <h2 class="title">Registrar nuevo usuario</h2>
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
+                @include('partials.errors')
 
             <!-------    FORM  |  CREAR NUEVO user    ----------->
                 <form action="{{ route('user_store') }}" method="post">

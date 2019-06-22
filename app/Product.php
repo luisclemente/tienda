@@ -89,13 +89,9 @@ class Product extends Model
       $productInCart = false;
 
       if ( auth ()->check () )
-      {
          foreach ( auth ()->user ()->cart->details as $detail )
-         {
             if ( $detail->product_id == $this->id )
                return $productInCart = true;
-         }
-      }
 
       return $productInCart;
    }

@@ -20,13 +20,6 @@ class CartDetail extends Model
          }
       } );
 
-      static::updated ( function ( Cartdetail $cartDetail ) {
-         if ( ! \App::runningInConsole () )
-         {
-
-         }
-      } );
-
       static::deleted ( function ( Cartdetail $cartDetail ) {
          if ( ! \App::runningInConsole () )
          {

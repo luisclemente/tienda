@@ -3,6 +3,9 @@
 @section('body-class', 'profile-page sidebar-collapse')
 @section('content')
 
+    <div class="page-header header-filter" data-parallax="true"
+         style="background-image: url('{{ asset ('img/profile_city.jpg') }}')">
+    </div>
     <div class="main main-raised">
         <div class="container">
             <div class="section text-center">
@@ -47,7 +50,7 @@
                                     <!-------   BUTTON INFO  ----------->
                                     <a href="{{ route ('cart_show', $cart_pending) }}"
                                        target="_blank" rel="tooltip" class="btn btn-info btn-sm"
-                                       title="Ver producto">
+                                       title="Ver pedido">
                                         <i class="fa fa-info"></i>
                                     </a>
 

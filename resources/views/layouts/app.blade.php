@@ -124,7 +124,8 @@
                                    id="navbarDropdownMenuLink"
                                    data-toggle="dropdown"
                                    aria-haspopup="false"
-                                   aria-expanded="false">
+                                   aria-expanded="false"
+                                >
                                     {{ __("Selecciona un idioma") }}
                                 </a>
 

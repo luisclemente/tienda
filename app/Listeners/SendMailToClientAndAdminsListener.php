@@ -17,8 +17,7 @@ class SendMailToClientAndAdminsListener
       \Mail::to ( $event->user )->send ( new InvoiceMail( $event->user, $event->cart, $pdf ) );
 
       foreach ( $user_admins as $admin )
-      {
          \Mail::to ( $admin )->send ( new InvoiceMail( $event->user, $event->cart, $pdf ) );
-      }
+
    }
 }

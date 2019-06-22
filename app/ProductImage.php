@@ -15,6 +15,7 @@ class ProductImage extends Model
    {
       if ( substr ( $this->image, 0, 4 ) === 'http' )
          return $this->image;
+
       return '/images/products/' . $this->image;
    }
 }

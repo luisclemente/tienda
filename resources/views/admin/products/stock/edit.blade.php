@@ -20,14 +20,6 @@
                     @csrf
                     <input type="hidden" name="previous_url" value="{{ URL::previous () }}">
                     <div class="row">
-                        {{--<div class="col-sm-9">
-                            <div class="form-group label-floating">
-                                <label class="control-label">Nombre del producto</label>
-                                <input type="text" class="form-control" name="name"
-                                       value="{{ old('name', $product->name) }}" disabled
-                                >
-                            </div>
-                        </div>--}}
 
                         <!--------   STOCK   -------->
                         <div class="col-sm-4 mx-auto">

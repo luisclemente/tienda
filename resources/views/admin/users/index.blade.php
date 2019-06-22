@@ -12,6 +12,11 @@
         <div class="container">
             <div class="section text-center">
                 <h2 class="title">Listado de usuarios</h2>
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
                 <div class="team">
                     <div class="row justify-content-center">
 
@@ -30,6 +35,8 @@
                                 <th class="col-md-2">Phone</th>
                                 <th class="text-right">Address</th>
                                 <th class="text-right">UserName</th>
+                                <th class="text-right">Last Login</th>
+                                <th class="text-right">Registered</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,48 +48,33 @@
                                     <td>{{ $user->phone}}</td>
                                     <td class="text-right">{{ $user->address }}</td>
                                     <td class="text-right">{{ $user->user_name }}</td>
+                                    @if ($user->last_logged_at)
+                                        <td class="text-right">{{ $user->last_logged_at->diffForHumans() }}</td>
+                                    @else
+                                        <td class="text-right"></td>
+                                    @endif
+                                    <td class="text-right">{{ $user->created_at->diffForHumans() }}</td>
                                     <td class="td-actions text-right">
 
-                                        <!-------  FORM | ELIMINAR USUARIO --->
-                                    {{-- <form method="post" action="{{ route('user_destroy', $user ) }}">
-                                     @csrf
-                                     @method('delete')--}}
-
-                                    <!-------    BUTTON MOSTRAR    ----------->
-                                    {{--<a href="{{ route(' user_show', $user) }}"
-                                       rel="tooltip" class="btn btn-info btn-sm" title="Ver producto"
-                                       target="_blank">
-                                        <i class="fa fa-info"></i>
-                                    </a>--}}
-
-                                    <!-------    BUTTON | EDITAR  ----------->
+                                    <!-------  'EDITAR'  ----------->
                                         <a href="{{ route ('user_edit', $user ) }}"
                                            rel="tooltip" class="btn btn-success btn-sm" title="Editar producto">
                                             <i class="material-icons">edit</i>
                                         </a>
 
-                                        <!-------    BUTTON | ELIMINAR   ----------->
-
-                                            <button id="modificar"
-                                                    rel="tooltip"
-                                                    class="btn btn-danger btn-sm"
-                                                    title="Eliminar"
-                                                    data-toggle="modal"
-                                                    data-target="#modalAddtoCart"
-                                                    data-user="{{ $user->id }}"
-                                                    data-username="{{ $user->name }}"
-                                                    data-usercarts="{{ $user->carts->count() }}"
-                                            >
-                                                <i class="material-icons">close</i>
-                                            </button>
-
-
-                                           {{--   <button type="submit" class="btn btn-danger btn-sm">
-                                                  <i class="material-icons">close</i>
-                                              </button>--}}
-
-
-                                        {{--</form>--}}
+                                        <!-------   'ELIMINAR'   ----------->
+                                        <button id="modificar"
+                                                rel="tooltip"
+                                                class="btn btn-danger btn-sm"
+                                                title="Eliminar"
+                                                data-toggle="modal"
+                                                data-target="#modalAddtoCart"
+                                                data-user="{{ $user->id }}"
+                                                data-username="{{ $user->name }}"
+                                                data-usercarts="{{ $user->carts->count() }}"
+                                        >
+                                            <i class="material-icons">close</i>
+                                        </button>
 
                                     </td>
                                 </tr>
@@ -127,15 +119,15 @@
 
 @section('scripts')
     <script>
-        $(document).on('click', '#modificar', function () {
-            var user = $(this).attr('data-user');
-            var username = $(this).attr('data-username');
-            var usercarts = $(this).attr('data-usercarts');
-            $('#exampleModalLabel').text('El usuario ' +  username + ' tiene '
+        $( document ).on( 'click', '#modificar', function () {
+            var user = $( this ).attr( 'data-user' );
+            var username = $( this ).attr( 'data-username' );
+            var usercarts = $( this ).attr( 'data-usercarts' );
+            $( '#exampleModalLabel' ).text( 'El usuario ' + username + ' tiene '
                 + usercarts + ' carritos activos o pendientes.' + '\n'
-                + 'Se eliminará el usuario y todos sus carritos');
-            $('#modalAddtoCart input[name=user_id]').val(user);
-        });
+                + 'Se eliminará el usuario y todos sus carritos' );
+            $( '#modalAddtoCart input[name=user_id]' ).val( user );
+        } );
     </script>
 
 
