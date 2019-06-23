@@ -3,8 +3,8 @@
 return [
 
    // set your paypal credential
-   'client_id' => 'AVUNnI6tl4sS9_yBwsAtN7yCVquPeBix8YJ9twOdH47RaQKGULHuUh-FTjDRHeqsYLiUvA0Y9d1m5HN5',
-   'secret' => 'ENJYWabJ-xCiHBKZmQlk10PiiP41-LgLhmfZAFtyyuI3_Dog3XqhUPanVVPASuFmRx0qKnyedryzJ21A',
+   'client_id' => env ('PAYPAL_CLIENT_ID'),
+   'secret' => env ('PAYPAL_SECRET'),
    /**
     * SDK configuration
     */

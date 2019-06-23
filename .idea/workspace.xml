@@ -3,47 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="177cbc44-dae1-4b45-88c0-65cc0d5aed3a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CartDetail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CartDetail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/CartWasOrderedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/CartWasOrderedEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/ProductInCartEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/ProductInCartEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/ProductPriceWasChangedEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/ProductPriceWasChangedEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Events/ProductUnderMinimumStockEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Events/ProductUnderMinimumStockEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClientesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ImageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProviderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ProviderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/StockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/StockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CartDetailController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CartDetailController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaypalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaypalController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CategoryRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CategoryRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ProductRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StockRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StockRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/SendMailToAdminsListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/SendMailToAdminsListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/SendMailToClientAndAdminsListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/SendMailToClientAndAdminsListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Listeners/UpdateProductStockListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/UpdateProductStockListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/MinimumStockMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/MinimumStockMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/NewOrder.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/NewOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Mail/UserRegisteredMail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/UserRegisteredMail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/OrderItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/OrderItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/UserPolicy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ProductImage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ProductImage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/clients/ordered_carts.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/clients/ordered_carts.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/stock/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/stock/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/paypal.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/paypal.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,82 +52,35 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1482" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaypalController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="27" column="97" selection-start-line="27" selection-start-column="97" selection-end-line="27" selection-end-column="97" />
+            <state relative-caret-position="-4514">
+              <caret line="6" selection-start-line="6" selection-end-line="7" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/users/index.blade.php">
+        <entry file="file://$PROJECT_DIR$/config/paypal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="9" column="10" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="9" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="312">
+              <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/clients/ordered_carts.blade.php">
+        <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-              <folding>
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#216#285#0#HTML" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-                <element signature="e#0#5#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="384">
+              <caret line="48" column="94" selection-start-line="48" selection-start-column="94" selection-end-line="48" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -199,13 +112,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/seeds/ProvidersTableSeeder.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/providers/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Policies/UserPolicy.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Mail/InvoiceMail.php" />
         <option value="$PROJECT_DIR$/app/Providers/EventServiceProvider.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/mail.php" />
         <option value="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/UserRequest.php" />
@@ -250,6 +161,8 @@
         <option value="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/clients/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/clients/ordered_carts.blade.php" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/config/paypal.php" />
       </list>
     </option>
   </component>
@@ -371,6 +284,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -399,6 +313,11 @@
             <path>
               <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
               <item name="tienda" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tienda" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tienda" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -416,7 +335,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -539,12 +457,13 @@
       <workItem from="1561121216700" duration="5404000" />
       <workItem from="1561131665123" duration="1284000" />
       <workItem from="1561156658071" duration="4454000" />
-      <workItem from="1561223573676" duration="9520000" />
+      <workItem from="1561223573676" duration="9826000" />
+      <workItem from="1561310950788" duration="431000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="703911000" />
+    <option name="totallyTimeSpent" value="704648000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1368" height="744" extended-state="6" />
@@ -552,7 +471,7 @@
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.20227273" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.20530303" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.3295082" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3289256" />
@@ -565,7 +484,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" weight="0.3295082" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3289256" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50151515" side_tool="true" weight="0.9114754" />
-      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49848485" weight="0.90819675" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49848485" weight="0.9065574" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -587,22 +506,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Listeners/SendMailToClientAndAdminsListener.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
-          <folding>
-            <element signature="e#33#58#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/SendMailToNewUserRegisteredListener.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Listeners/StoreLastLoginDateListener.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Listeners/UpdateProductStockListener.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -1245,11 +1148,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1482" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CartDetailController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-78" />
@@ -1332,9 +1230,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-06-21.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-06-21.log" />
     <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-06-22.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9971" />
@@ -1343,6 +1239,36 @@
     <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-04-01.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/clients/ordered_carts.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+            <element signature="e#0#5#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="10" selection-start-line="7" selection-start-column="3" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -1350,62 +1276,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/users/index.blade.php">
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PaypalController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="10" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="9" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-4514">
+          <caret line="6" selection-start-line="6" selection-end-line="7" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/clients/ordered_carts.blade.php">
+    <entry file="file://$PROJECT_DIR$/config/paypal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" column="45" lean-forward="true" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#216#285#0#HTML" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-            <element signature="e#0#5#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="312">
+          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="48" column="94" selection-start-line="48" selection-start-column="94" selection-end-line="48" selection-end-column="94" />
         </state>
       </provider>
     </entry>
