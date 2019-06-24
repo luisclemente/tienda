@@ -320,7 +320,7 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-1" />
     <option name="y" value="25" />
     <option name="width" value="1368" />
@@ -514,15 +514,15 @@
       <workItem from="1561223573676" duration="9826000" />
       <workItem from="1561310950788" duration="4322000" />
       <workItem from="1561368527047" duration="359000" />
-      <workItem from="1561368906243" duration="22259000" />
+      <workItem from="1561368906243" duration="23396000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="731157000" />
+    <option name="totallyTimeSpent" value="732294000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="25" width="1368" height="744" extended-state="6" />
+    <frame x="-1" y="25" width="1368" height="744" extended-state="7" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />

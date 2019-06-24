@@ -16,7 +16,8 @@ class Product extends Model
 
    public static function boot ()
    {
-      parent::boot ();
+      /*
+       * parent::boot ();
       static::created ( function ( Product $product ) {
          if ( ! \App::runningInConsole () )
          {
@@ -27,7 +28,7 @@ class Product extends Model
             }
          }
       } );
-
+*/
       static::updated ( function ( Product $product ) {
          if ( ! \App::runningInConsole () )
          {
