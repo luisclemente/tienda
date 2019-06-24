@@ -7,7 +7,7 @@ $factory->define ( ProductImage::class, function ( Faker $faker ) {
    return [
      // 'image' => $faker->imageUrl ( 250, 250 ),
       'image' => 'https://loremflickr.com/250/250',
-      'product_id' => $faker->numberBetween ( 1, 100 ),
+     // 'product_id' => $faker->numberBetween ( 1, 100 ),
 
    ];
 } );

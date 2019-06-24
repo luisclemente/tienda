@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
 
          $table->bigIncrements ( 'id' );
 
-         $table->unsignedBigInteger ('category_id')->nullable();
-         $table->foreign ('category_id')->references('id')->on('categories');
+        /* $table->unsignedBigInteger ('category_id')->nullable();
+         $table->foreign ('category_id')->references('id')->on('categories');*/
 
          $table->string ( 'name' );
          $table->mediumText ( 'description' );

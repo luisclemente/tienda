@@ -11,16 +11,24 @@ class CategoriesTableSeeder extends Seeder
    {
       factory ( Category::class, 1 )->create ( [ 'name' => 'General' ] );
 
-      factory ( Category::class, 5 )->create ()
-         ->each ( function ( $category ) {
-            $products = factory ( Product::class, 20 )->make ();
-            $category->products ()->saveMany ( $products );
+      // API
+      factory ( Product::class, 20 )->create ()->each
+      (
+         function ( $product )
+         {
+            $images = factory ( ProductImage::class, 5 )->create ( [ 'product_id' => $product->id ] );
+            $product->images ()->saveMany ( $images );
+         }
+      );
 
-            $products->each ( function ( $product ) {
-               $images = factory ( ProductImage::class, 5 )->make ();
-               $product->images ()->saveMany ( $images );
-            } );
-         } );
+      factory ( Category::class, 5 )->create ()->each
+      (
+         function ( $category )
+         {
+            $products = Product::all ()->whereBetween ( 'id', [ rand ( 1, 5 ), rand ( 6, 20 ) ] );
+            $category->products ()->sync ( $products );
+         }
+      );
 
 
    } // run

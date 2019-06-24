@@ -17,6 +17,18 @@ class Product extends Model
    public static function boot ()
    {
       parent::boot ();
+      static::created ( function ( Product $product ) {
+         if ( ! \App::runningInConsole () )
+         {
+            if ( ! $product->Has('categories'))
+            {
+               $category = Category::find ( 1 );
+               $category->products ()->attach ( $product->id );
+
+              // $product->categories ()->attach ( 1 );
+            }
+         }
+      } );
 
       static::updated ( function ( Product $product ) {
          if ( ! \App::runningInConsole () )
@@ -26,9 +38,9 @@ class Product extends Model
       } );
    }
 
-   public function category ()
+   public function categories ()
    {
-      return $this->belongsTo ( Category::class );
+      return $this->belongsToMany ( Category::class );
    }
 
    public function images ()
@@ -48,7 +60,7 @@ class Product extends Model
 
    public function providers ()
    {
-       return $this->belongsToMany (Provider::class)->withPivot ('price', 'discount');
+      return $this->belongsToMany ( Provider::class )->withPivot ( 'price', 'discount' );
    }
 
    /*
@@ -98,7 +110,7 @@ class Product extends Model
 
    public static function availableUnits ( $request, $quantity = null )
    {
-      $quantity = $quantity ?: $request->quantity;
+      $quantity = $quantity ? : $request->quantity;
       $stockTotal = $request->product_stock - $quantity;
 
       if ( $stockTotal < 0 )

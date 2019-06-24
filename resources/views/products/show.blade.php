@@ -32,7 +32,10 @@
                 <!---------  INFO: NOMBRE, CATEGORÍA Y DESCRIPCIÓN DEL PRODUCTO  ----------->
                 <div class="name text-center">
                     <h3 class="title">{{ $product->name }}</h3>
-                    <h6>{{ $product->category->name }}</h6>
+                    @foreach ($product->categories as $category)
+                        <h6>{{ $category->name }}</h6>
+                        <br>
+                    @endforeach
                     <div class="description text-center">
                         <p>{{ $product->long_description }}</p>
                     </div>
@@ -70,7 +73,7 @@
                             Añadir al carrito de compras
                         </a>
                     </div>
-                @endauth
+            @endauth
 
             <!--------- IMAǴENES DEL PRODUCTO ----------->
                 <div class="text-center gallery">
