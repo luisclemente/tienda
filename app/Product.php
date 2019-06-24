@@ -24,8 +24,6 @@ class Product extends Model
             {
                $category = Category::find ( 1 );
                $category->products ()->attach ( $product->id );
-
-              // $product->categories ()->attach ( 1 );
             }
          }
       } );
